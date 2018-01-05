@@ -29,6 +29,7 @@ app.post('/webhook', function (req, res) {
       //Newsfeed changes webhook request
       if (pageEntry.hasOwnProperty('changes')) {
         pageEntry.changes.forEach(function (changes) {
+          console.log(changes);
           if (changes.field == "feed" && changes.value.item == "comment" && changes.value.verb == "add") {
             var messageData = {
               message: "hello"
@@ -51,6 +52,7 @@ app.post('/webhook', function (req, res) {
 });
 
 function callPrivateReply(messageData, comment_id) {
+  console.log(messageData, comment_id);
   request({
     uri: 'https://graph.facebook.com/v2.9/' + comment_id + '/private_replies',
     qs: { access_token: PAGE_ACCESS_TOKEN },
