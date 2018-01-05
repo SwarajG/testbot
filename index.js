@@ -7,22 +7,63 @@ const
     app = express().use(bodyParser.json());
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
-app.post('/webhook', (req, res) => {
-  let body = req.body;
-  // Checks this is an event from a page subscription
-  if (body.object === 'page') {
-    // Iterates over each entry - there may be multiple if batched
-    body.entry.forEach((entry) => {
-      // Gets the message. entry.messaging is an array, but 
-      // will only ever contain one message, so we get index 0
-      let webhook_event = entry.messaging[0];
-      console.log(webhook_event);
+// app.post('/webhook', (req, res) => {
+//   let body = req.body;
+//   if (body.object === 'page') {
+//     body.entry.forEach((entry) => {
+//       let webhook_event = entry.messaging[0];
+//       console.log(webhook_event);
+//     });
+//     res.status(200).send('EVENT_RECEIVED');
+//   } else {
+//     res.sendStatus(404);
+//   }
+// });
+
+app.post('/webhook', function (req, res) {
+  var data = req.body;
+  // Make sure this is a page subscription
+  if (data.object == 'page') {
+    // Iterate over each entry
+    data.entry.forEach(function (pageEntry) {
+      //Newsfeed changes webhook request
+      if (pageEntry.hasOwnProperty('changes')) {
+        pageEntry.changes.forEach(function (changes) {
+          if (changes.field == "feed" && changes.value.item == "comment" && changes.value.verb == "add") {
+            var messageData = {
+              message: "hello"
+            };
+            callPrivateReply(messageData, changes.value.comment_id);
+          }
+        });
+      }
+      //Messenger webhook request
+      if (pageEntry.hasOwnProperty('messaging')) {
+        //messenger code goes here
+      }
     });
-    res.status(200).send('EVENT_RECEIVED');
-  } else {
-    res.sendStatus(404);
+    // Assume all went well.
+    //
+    // You must send back a 200, within 20 seconds, to let us know you've 
+    // successfully received the callback. Otherwise, the request will time out.
+    res.sendStatus(200);
   }
 });
+
+function callPrivateReply(messageData, comment_id) {
+  request({
+    uri: 'https://graph.facebook.com/v2.9/' + comment_id + '/private_replies',
+    qs: { access_token: PAGE_ACCESS_TOKEN },
+    method: 'POST',
+    json: messageData
+  }, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log(body);
+    } else {
+      console.error("Failed calling Send API", response.statusCode, response.statusMessage, body.error);
+    }
+  });
+}
 
 app.get('/webhook', (req, res) => {
 
