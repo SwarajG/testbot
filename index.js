@@ -1,12 +1,11 @@
 'use strict';
 
 require('dotenv').config();
-const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 const
     express = require('express'),
     bodyParser = require('body-parser'),
-    env = require('./env'),
     app = express().use(bodyParser.json());
+const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
 app.post('/webhook', (req, res) => {
   let body = req.body;
