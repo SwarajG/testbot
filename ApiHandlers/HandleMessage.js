@@ -7,7 +7,6 @@ module.exports = (senderPsid, receivedMessage) => {
   if (receivedResponse) {
     response = {
       text: 'hello',
-      // getStarted,
     };
   }
   callSendAPI(senderPsid, response);

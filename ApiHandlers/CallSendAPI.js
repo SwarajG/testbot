@@ -18,11 +18,10 @@ module.exports = (senderPsid, message) => {
     method: 'POST',
     json: requestBody,
   }, (err, res, body) => {
-    console.log(body);
     if (!err) {
-      console.log('message sent!');
+      console.log('Message sent!');
     } else {
-      console.error("Unable to send message:" + err);
+      console.error(`Unable to send message: ${err}`);
     }
   });
 };

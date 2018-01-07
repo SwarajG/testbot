@@ -7,15 +7,13 @@ module.exports = (res) => {
     greeting: [
       {
         locale: 'default',
-        text: 'Greeting text for default local !',
+        text: 'Presenting the taste that brings you back!',
       }, {
         locale: 'en_US',
-        text: 'Greeting text for en_US local !',
+        text: 'Presenting the taste that brings you back!',
       },
     ],
   };
-
-  console.log('greeting request');
 
   request(
     {
