@@ -18,6 +18,7 @@ module.exports = (senderPsid, message) => {
     method: 'POST',
     json: requestBody,
   }, (err, res, body) => {
+    console.log(body);
     if (!err) {
       console.log('message sent!');
     } else {
