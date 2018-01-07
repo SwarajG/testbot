@@ -6,11 +6,9 @@
     "comma-dangle": [
       "error",
       {
-        "arrays": "never",
-        "objects": "never",
-        "imports": "never",
-        "exports": "never",
-        "functions": "ignore"
+        "functions": "never",
+        "objects": "ignore",
+        "imports": "ignore"
       }
     ]
   },

@@ -1,7 +1,9 @@
 require('dotenv').config();
 const express = require('express');
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const ApiHandlers = require('./ApiHandlers');
+const config = require('./config');
 // const SetupHandlers = require('./SetupHandlers');
 
 const app = express().use(bodyParser.json());
@@ -93,4 +95,14 @@ app.get('/webhook', (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
+mongoose.Promise = global.Promise;
+mongoose.connect(config.mongodbUrl);
+const db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', () => {
+  const port = process.env.PORT || 5000;
+  app.listen(port, () => {
+    console.log(`Listening on port ${port}...`);
+  });
+});
