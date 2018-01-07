@@ -8,16 +8,15 @@ const app = express().use(bodyParser.json());
 
 app.get('/setup', (req, res) => {
   SetupHandlers.setupGetStartedButton(res);
-  SetupHandlers.setupPersistentMenu(res);
   SetupHandlers.setupGreetingText(res);
 });
 
 app.post('/webhook', (req, res) => {
   const { body } = req;
   if (body.object === 'page') {
-    console.log(body.entry);
     body.entry.forEach((entry) => {
       const webhookEvent = entry.messaging[0];
+      console.log('webhookEvent: ', webhookEvent);
       const senderPsid = webhookEvent.sender.id;
       if (webhookEvent.message) {
         ApiHandlers.handleMessage(senderPsid, webhookEvent.message);
