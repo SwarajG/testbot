@@ -5,12 +5,10 @@ module.exports = (senderPsid, receivedMessage) => {
   let response;
   const receivedResponse = receivedMessage.text;
   if (receivedResponse) {
-    if (receivedResponse.toLowerCase() === 'get started') {
-      response = {
-        text: 'hello',
-        // getStarted,
-      };
-    }
+    response = {
+      text: 'hello',
+      // getStarted,
+    };
   }
   callSendAPI(senderPsid, response);
 };
