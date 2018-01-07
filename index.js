@@ -2,14 +2,14 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const ApiHandlers = require('./ApiHandlers');
-const SetupHandlers = require('./SetupHandlers');
+// const SetupHandlers = require('./SetupHandlers');
 
 const app = express().use(bodyParser.json());
 
-app.get('/setup', (req, res) => {
-  SetupHandlers.setupGetStartedButton(res);
-  SetupHandlers.setupGreetingText(res);
-});
+// app.get('/setup', (req, res) => {
+//   SetupHandlers.setupGetStartedButton(res);
+//   SetupHandlers.setupGreetingText(res);
+// });
 
 app.post('/webhook', (req, res) => {
   const { body } = req;

@@ -15,15 +15,15 @@ const getResponseForReply = (payload) => {
     default:
       return {
         message: {
-          text: 'Soory, not able to catch your response, please try from the given options',
+          text: 'Sorry, not able to catch your response, please try from the given options',
         },
       };
   }
 };
 
 module.exports = (senderPsid, receivedPostback) => {
+  console.log('Postback: ', senderPsid, receivedPostback);
   const { payload } = receivedPostback;
   const response = getResponseForReply(payload);
   callSendAPI(senderPsid, response);
-  console.log('Postback: ', senderPsid, receivedPostback);
 };
