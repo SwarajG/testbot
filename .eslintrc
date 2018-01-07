@@ -2,6 +2,7 @@
   "env": {
     "browser": true
   },
+  "rules": {},
   "extends": "airbnb",
   "parser": "babel-eslint"
 }

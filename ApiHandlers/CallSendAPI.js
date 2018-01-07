@@ -1,4 +1,5 @@
 const request = require('request');
+const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
 module.exports = (sender_psid, message) => {
   const request_body = {
