@@ -15,6 +15,8 @@ module.exports = (res) => {
     ],
   };
 
+  console.log('greeting request');
+
   request(
     {
       url: `https://graph.facebook.com/v2.6/me/messenger_profile?access_token=${PAGE_ACCESS_TOKEN}`,
