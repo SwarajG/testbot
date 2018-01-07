@@ -3,7 +3,7 @@ const GET_STARTED_RESPONSE = require('./Response/GetStarted');
 
 module.exports = (senderPsid, receivedPostback) => {
   const { payload } = receivedPostback.payload;
-  if (payload === 'GET_STARTED_PAYLOAD') {
+  if (payload === 'getstarted') {
     callSendAPI(GET_STARTED_RESPONSE);
     console.log('Send some starting stuff...');
   }

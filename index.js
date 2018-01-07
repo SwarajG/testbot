@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const ApiHandlers = require('./ApiHandlers');
-const SetupHandlers = require('./SetupHandlers');
+// const SetupHandlers = require('./SetupHandlers');
 
 const app = express().use(bodyParser.json());
 
@@ -15,13 +15,15 @@ app.post('/webhook', (req, res) => {
   const { body } = req;
   if (body.object === 'page') {
     body.entry.forEach((entry) => {
-      const webhookEvent = entry.messaging[0];
-      console.log('webhookEvent: ', webhookEvent);
-      const senderPsid = webhookEvent.sender.id;
-      if (webhookEvent.message) {
-        ApiHandlers.handleMessage(senderPsid, webhookEvent.message);
-      } else if (webhookEvent.postback) {
-        ApiHandlers.handlePostback(senderPsid, webhookEvent.postback);
+      if (entry.messaging) {
+        const webhookEvent = entry.messaging[0];
+        console.log('webhookEvent: ', webhookEvent);
+        const senderPsid = webhookEvent.sender.id;
+        if (webhookEvent.message) {
+          ApiHandlers.handleMessage(senderPsid, webhookEvent.message);
+        } else if (webhookEvent.postback) {
+          ApiHandlers.handlePostback(senderPsid, webhookEvent.postback);
+        }
       }
     });
     res.status(200).send('EVENT_RECEIVED');
