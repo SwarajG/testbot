@@ -8,10 +8,10 @@ const app = express().use(bodyParser.json());
 app.post('/webhook', (req, res) => {
   const { body } = req;
   if (body.object === 'page') {
+    console.log(body.entry);
     body.entry.forEach((entry) => {
       const webhookEvent = entry.messaging[0];
       const senderPsid = webhookEvent.sender.id;
-      console.log(webhookEvent);
       if (webhookEvent.message) {
         ApiHandlers.handleMessage(senderPsid, webhookEvent.message);
       } else if (webhookEvent.postback) {
