@@ -1,3 +1,3 @@
-module.exports = (sender_psid, received_postback) => {
+module.exports = (senderPsid, receivedPostback) => {
 
 };

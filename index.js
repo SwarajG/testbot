@@ -1,24 +1,20 @@
-'use strict';
-
 require('dotenv').config();
-const
-    express = require('express'),
-    bodyParser = require('body-parser'),
-    request = require('request'),
-    ApiHandlers = require('./ApiHandlers'),
-    app = express().use(bodyParser.json());
-const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
+const express = require('express');
+const bodyParser = require('body-parser');
+const ApiHandlers = require('./ApiHandlers');
+
+const app = express().use(bodyParser.json());
 
 app.post('/webhook', (req, res) => {
-  const body = req.body;
+  const { body } = req;
   if (body.object === 'page') {
     body.entry.forEach((entry) => {
-      const webhook_event = entry.messaging[0];
-      const sender_psid = webhook_event.sender.id;
-      if (webhook_event.message) {
-        ApiHandlers.handleMessage(sender_psid, webhook_event.message);
-      } else if (webhook_event.postback) {
-        ApiHandlers.handlePostback(sender_psid, webhook_event.postback);
+      const webhookEvent = entry.messaging[0];
+      const senderPsid = webhookEvent.sender.id;
+      if (webhookEvent.message) {
+        ApiHandlers.handleMessage(senderPsid, webhookEvent.message);
+      } else if (webhookEvent.postback) {
+        ApiHandlers.handlePostback(senderPsid, webhookEvent.postback);
       }
     });
     res.status(200).send('EVENT_RECEIVED');
@@ -74,8 +70,7 @@ app.post('/webhook', (req, res) => {
 // }
 
 app.get('/webhook', (req, res) => {
-
-  const VERIFY_TOKEN = "upandup"
+  const VERIFY_TOKEN = 'upandup';
   const mode = req.query['hub.mode'];
   const token = req.query['hub.verify_token'];
   const challenge = req.query['hub.challenge'];

@@ -5,5 +5,5 @@ const handlePostback = require('./HandlePostback');
 module.exports = {
   handleMessage,
   callSendApi,
-  handlePostback
+  handlePostback,
 };
