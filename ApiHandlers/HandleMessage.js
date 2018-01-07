@@ -7,7 +7,7 @@ module.exports = (senderPsid, receivedMessage) => {
   if (receivedResponse) {
     if (receivedResponse.toLowerCase() === 'get started') {
       response = {
-        message: 'hello',
+        text: 'hello',
         // getStarted,
       };
     }
