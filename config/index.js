@@ -1,5 +1,5 @@
-const mongodbUser = 'SwarajG';
-const mongodbPWd = 'Girlsrhell20';
+const mongodbUser = process.env.MONGO_USER;
+const mongodbPWd = process.env.MONGO_PWD;
 const mongodbDataBase = 'upandup-chatbot';
 const mongodbConnection = 'ds245277.mlab.com:45277';
 
