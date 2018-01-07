@@ -1,3 +1,5 @@
+const request = require('request');
+
 module.exports = (sender_psid, message) => {
   const request_body = {
     recipient: {
