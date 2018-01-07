@@ -7,10 +7,6 @@ const menuList = menu.map((category) => {
     title: name,
     image_url: imageUrl,
     buttons: [{
-      type: 'postback',
-      payload: 'back_to_first_menu',
-      title: 'Back to menu',
-    }, {
       title,
       payload,
       type: 'postback',

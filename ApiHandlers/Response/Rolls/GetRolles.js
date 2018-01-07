@@ -15,6 +15,10 @@ const createElements = priceList.rolls.map((roll) => {
       type: 'postback',
       payload: `add_${value}_roll`,
       title: buttonTitle,
+    }, {
+      type: 'postback',
+      payload: 'show_menu',
+      title: 'Back to menu',
     }],
   };
 });

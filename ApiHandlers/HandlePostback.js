@@ -11,8 +11,6 @@ const getResponseForReply = (payload) => {
   switch (payload) {
     case 'getstarted':
       return GET_STARTED_RESPONSE;
-    case 'back_to_first_menu':
-      return GET_STARTED_RESPONSE;
     case 'show_menu':
       return GET_MENU_RESPONSE;
     case 'show_combos':

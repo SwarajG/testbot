@@ -15,6 +15,11 @@ const createElements = priceList.biryani.map((biryani) => {
       title: buttonTitle,
     };
   });
+  buttons.push({
+    type: 'postback',
+    payload: 'show_menu',
+    title: 'Back to menu',
+  });
   return {
     title: name,
     image_url: image,
