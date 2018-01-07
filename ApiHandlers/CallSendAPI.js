@@ -2,23 +2,23 @@ const request = require('request');
 
 const { PAGE_ACCESS_TOKEN } = process.env;
 
-module.exports = (sender_psid, message) => {
-  const request_body = {
+module.exports = (senderPsid, message) => {
+  const requestBody = {
     recipient: {
-      id: sender_psid
+      id: senderPsid,
     },
-    message
-  }
+    message,
+  };
   request({
     uri: 'https://graph.facebook.com/v2.10/me/messages',
     qs: {
-      access_token: PAGE_ACCESS_TOKEN
+      access_token: PAGE_ACCESS_TOKEN,
     },
-    method: "POST",
-    json: request_body
+    method: 'POST',
+    json: requestBody,
   }, (err, res, body) => {
     if (!err) {
-      console.log('message sent!')
+      console.log('message sent!');
     } else {
       console.error("Unable to send message:" + err);
     }
