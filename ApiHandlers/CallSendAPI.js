@@ -9,6 +9,7 @@ module.exports = (senderPsid, message) => {
     },
     message,
   };
+
   request({
     uri: 'https://graph.facebook.com/v2.10/me/messages',
     qs: {
@@ -17,6 +18,7 @@ module.exports = (senderPsid, message) => {
     method: 'POST',
     json: requestBody,
   }, (err, res, body) => {
+    console.log(res, body);
     if (!err) {
       console.log('message sent!');
     } else {
