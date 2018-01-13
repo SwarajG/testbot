@@ -12,7 +12,9 @@ const itemList = require('../utils/itemList');
 const getResponseForReply = (payload, senderPsid) => {
   const allItems = [];
   Object.values(itemList).forEach(itemInfoList => allItems.push(itemInfoList));
-  const itemValueList = allItems.map(item => item.value);
+  const itemValueList = allItems
+    .reduce((prevItem, currItem) => prevItem.concat(currItem), [])
+    .map(item => item.value);
   console.log('itemValueList, payload', itemValueList, payload);
   if (itemValueList.indexOf(payload) > -1) {
     orderController.handleOrderState(senderPsid, payload, (err, response) => {
