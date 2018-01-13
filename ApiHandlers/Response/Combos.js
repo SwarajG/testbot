@@ -1,20 +1,25 @@
-const priceList = require('../Price');
+const priceList = require('./Price');
+const enums = require('../../utils/enum');
 
-const createElements = priceList.beverages.map((beverage) => {
+const createElements = priceList.combos.map((combo) => {
   const {
     name,
     image,
     value,
     price,
-  } = beverage;
+  } = combo;
   const buttonTitle = `Add to cart(Rs. ${price})`;
   return {
     title: name,
     image_url: image,
     buttons: [{
       type: 'postback',
-      payload: `add_${value}_beverage`,
+      payload: `${enums.ADD_ITEM}_${value}`,
       title: buttonTitle,
+    }, {
+      type: 'postback',
+      payload: 'show_menu',
+      title: 'Back to menu',
     }],
   };
 });

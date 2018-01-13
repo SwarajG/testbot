@@ -3,6 +3,7 @@
     "browser": true
   },
   "rules": {
+    "nomen": true,
     "comma-dangle": [
       "error",
       {

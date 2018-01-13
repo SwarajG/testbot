@@ -1,6 +1,6 @@
-const menu = require('./MenuInfo');
+const priceList = require('./Price');
 
-const menuList = menu.map((category) => {
+const menuList = priceList.menu.map((category) => {
   const { name, imageUrl, button } = category;
   const { title, payload } = button;
   return {

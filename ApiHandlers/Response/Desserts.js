@@ -1,19 +1,20 @@
-const priceList = require('../Price');
+const priceList = require('./Price');
+const enums = require('../../utils/enum');
 
-const createElements = priceList.rolls.map((roll) => {
+const createElements = priceList.desserts.map((dessert) => {
   const {
     name,
     image,
     value,
     price,
-  } = roll;
+  } = dessert;
   const buttonTitle = `Add to cart(Rs ${price})`;
   return {
     title: name,
     image_url: image,
     buttons: [{
       type: 'postback',
-      payload: `add_${value}_roll`,
+      payload: `${enums.ADD_ITEM}_${value}`,
       title: buttonTitle,
     }, {
       type: 'postback',
