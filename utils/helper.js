@@ -4,9 +4,11 @@ module.exports = {
   getItemById: (itemId) => {
     const allItems = [];
     Object.values(itemList).forEach(itemInfoList => allItems.push(itemInfoList));
-    return allItems
+    const allFilteredItems = allItems
       .reduce((prevItem, currItem) => prevItem.concat(currItem), [])
-      .find(item => item.value === itemId);
+      .filter(item => item.value);
+    console.log(allFilteredItems);
+    return allFilteredItems.find(item => item.value === itemId);
   },
 };
 

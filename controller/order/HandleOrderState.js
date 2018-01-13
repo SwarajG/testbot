@@ -8,7 +8,6 @@ const handleOrderStatus = (userId, payload, cb) => {
   const argumentsForOrder = payload.split('_');
   const action = argumentsForOrder[0];
   const valueOfItem = argumentsForOrder.slice(1, argumentsForOrder.length);
-  console.log('action, valueOfItem', action, valueOfItem);
   switch (action) {
     case enums.ADD_ITEM:
       addItemToCart(userId, valueOfItem, cb);

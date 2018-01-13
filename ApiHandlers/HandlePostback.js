@@ -17,7 +17,6 @@ const getResponseForReply = (payload, senderPsid) => {
     .map(item => item.value)
     .filter(itemValue => !!itemValue);
   const value = payload.split('_')[1];
-  console.log('value, payload', value, payload);
   if (itemValueList.indexOf(value) > -1) {
     orderController.handleOrderState(senderPsid, payload, (err, response) => {
       if (err) {

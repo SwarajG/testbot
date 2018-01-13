@@ -18,8 +18,3 @@ module.exports = {
     },
   },
 };
-// {
-//   type: 'web_url',
-//   url: 'http://upandup.online/',
-//   title: 'Visit Website',
-// }
