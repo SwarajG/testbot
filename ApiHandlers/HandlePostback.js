@@ -14,8 +14,8 @@ const getResponseForReply = (payload, senderPsid) => {
   Object.values(itemList).forEach(itemInfoList => allItems.push(itemInfoList));
   const itemValueList = allItems
     .reduce((prevItem, currItem) => prevItem.concat(currItem), [])
-    .filter(itemValue => !!itemValue)
-    .map(item => item.value);
+    .map(item => item.value)
+    .filter(itemValue => !!itemValue);
   console.log('itemValueList, payload', itemValueList, payload);
   if (itemValueList.indexOf(payload) > -1) {
     orderController.handleOrderState(senderPsid, payload, (err, response) => {
