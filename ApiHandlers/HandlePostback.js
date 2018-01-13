@@ -14,6 +14,7 @@ const getResponseForReply = (payload, senderPsid) => {
   Object.values(itemList).forEach(itemInfoList => allItems.push(itemInfoList));
   const itemValueList = allItems
     .reduce((prevItem, currItem) => prevItem.concat(currItem), [])
+    .filter(itemValue => !!itemValue)
     .map(item => item.value);
   console.log('itemValueList, payload', itemValueList, payload);
   if (itemValueList.indexOf(payload) > -1) {
