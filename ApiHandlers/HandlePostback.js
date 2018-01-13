@@ -10,7 +10,9 @@ const orderController = require('../controller/order');
 const itemList = require('../utils/itemList');
 
 const getResponseForReply = (payload, senderPsid) => {
-  const itemValueList = itemList.map(item => item.value);
+  const allItems = [];
+  Object.values(itemList).forEach(itemInfoList => allItems.push(itemInfoList));
+  const itemValueList = allItems.map(item => item.value);
   console.log('itemValueList, payload', itemValueList, payload);
   if (itemValueList.indexOf(payload) > -1) {
     orderController.handleOrderState(senderPsid, payload, (err, response) => {
