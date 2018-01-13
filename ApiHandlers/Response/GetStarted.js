@@ -10,7 +10,7 @@ module.exports = {
         buttons: [
           {
             type: 'postback',
-            payload: 'show_menu',
+            payload: 'show-menu',
             title: 'Show menu',
           },
         ],
