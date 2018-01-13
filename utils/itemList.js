@@ -4,61 +4,61 @@ module.exports = {
     imageUrl: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/combo.jpeg',
     button: {
       title: 'Show more',
-      payload: 'show_combos',
+      payload: 'show-combos',
     },
   }, {
     name: 'Biryani',
     imageUrl: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani.jpg',
     button: {
       title: 'Show more',
-      payload: 'show_biryani',
+      payload: 'show-biryani',
     },
   }, {
     name: 'Rolls',
     imageUrl: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
     button: {
       title: 'Show more',
-      payload: 'show_rolls',
+      payload: 'show-rolls',
     },
   }, {
     name: 'Dessert',
     imageUrl: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-phirni.jpg',
     button: {
       title: 'Show more',
-      payload: 'show_dessert',
+      payload: 'show-dessert',
     },
   }, {
     name: 'Beverages',
     imageUrl: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-chicksoup.jpg',
     button: {
       title: 'Show more',
-      payload: 'show_beverages',
+      payload: 'show-beverages',
     },
   }],
   rolls: [{
     name: 'Paneer Roll',
-    value: 'paneer_roll',
+    value: 'paneer-roll',
     image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/paneer-roll.jpeg',
     price: 99,
   }, {
     name: 'Egg Roll',
-    value: 'egg',
+    value: 'egg-roll',
     image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/egg-roll.jpeg',
     price: 89,
   }, {
     name: 'Chicken Roll',
-    value: 'chicken_roll',
+    value: 'chicken-roll',
     image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/1509099231_KnorrShanghaiChickenWda.jpg',
     price: 99,
   }],
   desserts: [{
     name: 'Up & Up - Phirni',
-    value: 'phirni_desserts',
+    value: 'phirni-desserts',
     image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-phirni.jpg',
     price: 99,
   }, {
     name: 'Rava Dry Fruit Halwa',
-    value: 'halwa_desserts',
+    value: 'halwa-desserts',
     image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
     price: 75,
   }],
@@ -77,13 +77,13 @@ module.exports = {
   }, {
     name: 'Special-Single (Serve 1)',
     descriptions: '',
-      image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/combo.jpeg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/combo.jpeg',
     value: 'special-serve',
     price: 249,
   }, {
     name: 'Special-Up Friends Up (Serve 2)',
     descriptions: '',
-      image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/combo.jpeg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/combo.jpeg',
     value: 'special-friends-up-serve',
     price: 399,
   }],

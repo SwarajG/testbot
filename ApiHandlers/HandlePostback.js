@@ -16,8 +16,9 @@ const getResponseForReply = (payload, senderPsid) => {
     .reduce((prevItem, currItem) => prevItem.concat(currItem), [])
     .map(item => item.value)
     .filter(itemValue => !!itemValue);
-  console.log('itemValueList, payload', itemValueList, payload);
-  if (itemValueList.indexOf(payload) > -1) {
+  const value = payload.split('_')[1];
+  console.log('value, payload', value, payload);
+  if (itemValueList.indexOf(value) > -1) {
     orderController.handleOrderState(senderPsid, payload, (err, response) => {
       if (err) {
         console.log('Sorry, not able to update to cart...', err);
@@ -30,17 +31,17 @@ const getResponseForReply = (payload, senderPsid) => {
   switch (payload) {
     case 'getstarted':
       return GET_STARTED_RESPONSE;
-    case 'show_menu':
+    case 'show-menu':
       return GET_MENU_RESPONSE;
-    case 'show_combos':
+    case 'show-combos':
       return SHOW_COMBOS_RESPONSE;
-    case 'show_biryani':
+    case 'show-biryani':
       return SHOW_BIRYANI_REPONSE;
-    case 'show_rolls':
+    case 'show-rolls':
       return SHOW_ROLLES_RESPONSE;
-    case 'show_dessert':
+    case 'show-dessert':
       return SHOW_DESSERT_RESPONSE;
-    case 'show_beverages':
+    case 'show-beverages':
       return SHOW_BEVERAGE_REPOSEN;
     default:
       return {
