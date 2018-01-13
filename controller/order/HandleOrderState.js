@@ -7,7 +7,7 @@ const addAddressForOrder = require('./AddAddressForOrder');
 const handleOrderStatus = (userId, payload, cb) => {
   const argumentsForOrder = payload.split('_');
   const action = argumentsForOrder[0];
-  const valueOfItem = argumentsForOrder.slice(1, argumentsForOrder.length);
+  const valueOfItem = argumentsForOrder.slice(1, argumentsForOrder.length)[0];
   switch (action) {
     case enums.ADD_ITEM:
       addItemToCart(userId, valueOfItem, cb);
