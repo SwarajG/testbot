@@ -5,7 +5,7 @@ const createOrder = require('./CreateOrder');
 const helper = require('../../utils/helper');
 
 const addItemToCart = (userId, itemIdentifier, cb) => {
-  console.log(helper.getItemById(itemIdentifier));
+  console.log('itemIdentifier, helper', itemIdentifier, helper.getItemById(itemIdentifier));
   const { value: itemId, name, price } = helper.getItemById(itemIdentifier);
   const item = { itemId, name, price };
   console.log(item);

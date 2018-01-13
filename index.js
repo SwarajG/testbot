@@ -19,7 +19,6 @@ app.post('/webhook', (req, res) => {
     body.entry.forEach((entry) => {
       if (entry.messaging) {
         const webhookEvent = entry.messaging[0];
-        console.log('webhookEvent: ', webhookEvent);
         const senderPsid = webhookEvent.sender.id;
         if (webhookEvent.message) {
           ApiHandlers.handleMessage(senderPsid, webhookEvent.message);
