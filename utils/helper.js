@@ -7,7 +7,6 @@ module.exports = {
     const allFilteredItems = allItems
       .reduce((prevItem, currItem) => prevItem.concat(currItem), [])
       .filter(item => item.value);
-    console.log(allFilteredItems);
     return allFilteredItems.find(item => item.value === itemId);
   },
 };

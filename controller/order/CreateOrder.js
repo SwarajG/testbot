@@ -10,7 +10,7 @@ const createOrder = (userId, item, cb) => {
   };
   Order
     .create(newOrder)
-    .then(cb)
+    .then(response => cb(null, response))
     .catch(err => console.log('Error in creating offer with err', err));
 };
 
