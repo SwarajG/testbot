@@ -2,6 +2,7 @@ const Order = require('../../model/order');
 const enums = require('../../utils/enum');
 
 const createOrder = (userId, item, cb) => {
+  console.log('userId', userId);
   const newOrder = {
     userId,
     itemList: [item],

@@ -17,7 +17,7 @@ const addItemToCart = (userId, itemIdentifier, cb) => {
     if (response.length > 1) {
       updateOrder(userId, item, cb);
     } else {
-      createOrder(item, cb);
+      createOrder(userId, item, cb);
     }
   });
 };
