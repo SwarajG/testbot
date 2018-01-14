@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const utils = require('../utils');
 const enums = require('../utils/enum');
-const _ = require('lodash');
 
 const orderSchema = mongoose.Schema({
   orderId: String,
@@ -10,15 +9,17 @@ const orderSchema = mongoose.Schema({
   address: String,
   status: String,
   itemList: Array,
+  userId: String,
 });
 
 const Order = mongoose.model('Order', orderSchema);
 
 module.exports = {
   create: (newOrder) => {
-    const clonedOrder = _.cloneDeep(newOrder);
-    clonedOrder.orderId = utils.getUniqueId();
-    const order = new Order(clonedOrder);
+    const orderId = {
+      orderId: utils.getUniqueId(),
+    };
+    const order = new Order(Object.assign(newOrder, orderId));
     const promise = new Promise((resolve, reject) => {
       order.save((err, dbOrder) => {
         if (err) reject(err);
