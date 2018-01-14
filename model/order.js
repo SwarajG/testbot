@@ -51,8 +51,7 @@ module.exports = {
   },
   getOpenOrderByUserId: (userId, cb) => {
     Order
-      .find({ userId })
-      .where('status').equals(enums.ORDER_STATUS.OPEN)
+      .find({ userId, status: enums.ORDER_STATUS.OPEN })
       .exec(cb);
   },
 };
