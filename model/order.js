@@ -18,7 +18,7 @@ module.exports = {
     const orderId = {
       orderId: utils.getUniqueId(),
     };
-    console.log('New Order 2: ', newOrder);
+    console.log('New Order 2: ', Object.assign(newOrder, orderId));
     const order = new Order(Object.assign(newOrder, orderId));
     const promise = new Promise((resolve, reject) => {
       order.save((err, dbOrder) => {
