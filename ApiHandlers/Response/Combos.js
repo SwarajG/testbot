@@ -18,7 +18,7 @@ const createElements = priceList.combos.map((combo) => {
       title: buttonTitle,
     }, {
       type: 'postback',
-      payload: 'show_menu',
+      payload: 'show-menu',
       title: 'Back to menu',
     }],
   };

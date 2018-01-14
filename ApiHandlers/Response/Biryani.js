@@ -14,7 +14,7 @@ const createElements = priceList.biryani.map((biryani) => {
     title: `Add to cart(Rs. ${price})`,
   }, {
     type: 'postback',
-    payload: 'show_menu',
+    payload: 'show-menu',
     title: 'Back to menu',
   }];
   buttons.push();

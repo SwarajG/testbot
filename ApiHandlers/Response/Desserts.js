@@ -18,7 +18,7 @@ const createElements = priceList.desserts.map((dessert) => {
       title: buttonTitle,
     }, {
       type: 'postback',
-      payload: 'show_menu',
+      payload: 'show-menu',
       title: 'Back to menu',
     }],
   };

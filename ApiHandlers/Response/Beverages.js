@@ -16,6 +16,10 @@ const createElements = priceList.beverages.map((beverage) => {
       type: 'postback',
       payload: `${enums.ADD_ITEM}_${value}`,
       title: buttonTitle,
+    }, {
+      type: 'postback',
+      payload: 'show-menu',
+      title: 'Back to menu',
     }],
   };
 });
