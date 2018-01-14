@@ -8,7 +8,6 @@ const addItemToCart = (userId, itemIdentifier, cb) => {
   console.log('itemIdentifier, helper', itemIdentifier, helper.getItemById(itemIdentifier));
   const { value: itemId, name, price } = helper.getItemById(itemIdentifier);
   const item = { itemId, name, price };
-  console.log(item);
   Order.getOpenOrderByUserId(userId, (err, response) => {
     if (err) {
       console.log('Error gettting the users...');

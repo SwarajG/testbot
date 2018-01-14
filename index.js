@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const ApiHandlers = require('./ApiHandlers');
 const config = require('./config');
+const Order = require('./model/order');
 // const SetupHandlers = require('./SetupHandlers');
 
 const app = express().use(bodyParser.json());
@@ -31,6 +32,16 @@ app.post('/webhook', (req, res) => {
   } else {
     res.sendStatus(404);
   }
+});
+
+app.get('/test', (req, res) => {
+  const { userId } = req.query;
+  Order
+    .getOpenOrderByUserId(userId)
+    .then((response) => {
+      console.log(response);
+    })
+  res.status(200).send();
 });
 
 // app.post('/webhook', function (req, res) {
