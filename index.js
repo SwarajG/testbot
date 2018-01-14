@@ -34,16 +34,6 @@ app.post('/webhook', (req, res) => {
   }
 });
 
-app.get('/test', (req, res) => {
-  const { userId } = req.query;
-  Order
-    .getOpenOrderByUserId(userId)
-    .then((response) => {
-      console.log(response);
-    })
-  res.status(200).send();
-});
-
 // app.post('/webhook', function (req, res) {
 //   var data = req.body;
 //   // Make sure this is a page subscription

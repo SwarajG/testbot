@@ -8,6 +8,7 @@ const createOrder = (userId, item, cb) => {
     itemList: [item],
     status: enums.ORDER_STATUS.OPEN,
   };
+  console.log('New Order: ', newOrder);
   Order
     .create(newOrder)
     .then(response => cb(null, response))
