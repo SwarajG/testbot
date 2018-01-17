@@ -37,7 +37,8 @@ const getResponseTextForUser = (senderPsid, payload) => {
   const argumentsForOrder = payload.split('_');
   const action = argumentsForOrder[0];
   const itemId = argumentsForOrder.slice(1, argumentsForOrder.length)[0];
-  const itemName = helper.getItemById(itemId);
+  const itemName = helper.getItemById(itemId).name;
+  console.log('item: ', helper.getItemById(itemId));
   let messageText = '';
   switch (action) {
     case enums.ADD_ITEM:
@@ -46,9 +47,7 @@ const getResponseTextForUser = (senderPsid, payload) => {
     default:
       break;
   }
-  setTimeout(() => {
-    prepareNextAction(senderPsid, action, itemName, itemId);
-  }, 300);
+  setTimeout(() => prepareNextAction(senderPsid, action, itemName, itemId), 300);
   return messageText;
 };
 
@@ -64,15 +63,15 @@ const getResponseForReply = (payload, senderPsid) => {
     orderController.handleOrderState(senderPsid, payload, (err, response) => {
       if (err) {
         console.log('Sorry, not able to update to cart...', err);
-        return false;
       }
       console.log('Successfully updated to the cart...', response);
       const responseTextForUser = getResponseTextForUser(senderPsid, payload);
-      return {
+      const choiceResponse = {
         message: {
           text: responseTextForUser,
         },
       };
+      callSendAPI(senderPsid, choiceResponse);
     });
   }
   switch (payload) {
