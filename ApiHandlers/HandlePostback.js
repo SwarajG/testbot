@@ -61,16 +61,16 @@ const getResponseForReply = (payload, senderPsid) => {
     orderController.handleOrderState(senderPsid, payload, (err, response) => {
       if (err) {
         console.log('Sorry, not able to update to cart...', err);
-      } else {
-        console.log('Successfully updated to the cart...', response);
+        return false;
       }
+      console.log('Successfully updated to the cart...', response);
+      const responseTextForUser = getResponseTextForUser(senderPsid, payload);
+      return {
+        message: {
+          text: responseTextForUser,
+        },
+      };
     });
-    const responseTextForUser = getResponseTextForUser(senderPsid, payload);
-    return {
-      message: {
-        text: responseTextForUser,
-      },
-    };
   }
   switch (payload) {
     case 'getstarted':
