@@ -28,9 +28,10 @@ module.exports = {
     });
     return promise;
   },
-  update: (orderId, updatedOrder) => {
+  update: (orderObjectId, updatedOrder) => {
     const promise = new Promise((resolve, reject) => {
-      Order.findOneAndUpdate({ orderId }, updatedOrder, (err, dbOrder) => {
+      const orderID = mongoose.Types.ObjectId(orderObjectId);
+      Order.findOneAndUpdate({ _id: orderID }, updatedOrder, (err, dbOrder) => {
         if (err) reject(err);
         resolve(dbOrder);
       });
