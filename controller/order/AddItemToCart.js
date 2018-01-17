@@ -11,7 +11,7 @@ const addItemToCart = (userId, itemIdentifier, cb) => {
     if (err) {
       console.log('Error gettting the users...');
     }
-    console.log(response);
+    console.log('response: ', response);
     if (response.length === 1) {
       updateOrder(userId, item, cb);
     } else {
