@@ -45,7 +45,9 @@ const getResponseTextForUser = (senderPsid, payload) => {
     default:
       break;
   }
-  setTimeout(prepareNextAction(senderPsid, action, itemName, itemId), 300);
+  setTimeout(() => {
+    prepareNextAction(senderPsid, action, itemName, itemId);
+  }, 300);
   return messageText;
 };
 
