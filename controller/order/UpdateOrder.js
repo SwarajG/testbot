@@ -5,9 +5,9 @@ const updateOrder = (userId, item, cb) => {
     if (err) {
       console.log('Error in getting a order for user...');
     } else {
-      console.log('updateOrder: ', order);
       const orderObjectId = order._id;
       order.itemList.push(item);
+      console.log('updateOrder: ', JSON.stringify(order));
       Order
         .update(orderObjectId, order)
         .then(cb)
