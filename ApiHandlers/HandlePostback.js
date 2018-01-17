@@ -1,5 +1,3 @@
-import { setTimeout } from 'timers';
-
 const callSendAPI = require('./CallSendAPI');
 const GET_STARTED_RESPONSE = require('./Response/GetStarted');
 const GET_MENU_RESPONSE = require('./Response/Menu');
