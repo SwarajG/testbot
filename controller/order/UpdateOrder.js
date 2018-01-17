@@ -7,9 +7,9 @@ const updateOrder = (userId, item, cb) => {
     } else {
       console.log('updateOrder: ', order);
       const orderObjectId = order._id;
-      const updatedOrder = Object.assign(order, { itemList: order.itemList.push(item) });
+      order.itemList.push(item);
       Order
-        .update(orderObjectId, updatedOrder)
+        .update(orderObjectId, order)
         .then(cb)
         .catch(updateErr => console.log('Error in updating order for user...', updateErr));
     }
