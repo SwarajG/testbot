@@ -51,7 +51,10 @@ module.exports = {
   },
   getOpenOrderByUserId: (userId, cb) => {
     Order
-      .find({ userId, status: enums.ORDER_STATUS.OPEN })
+      .find({
+        userId,
+        status: enums.ORDER_STATUS.OPEN,
+      })
       .exec(cb);
   },
 };
