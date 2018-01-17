@@ -21,6 +21,7 @@ const addItemQuickReplies = () => (
 
 const prepareNextAction = (senderPsid, action, itemName, itemId) => {
   const response = { message: { text: '', quick_replies: [] } };
+  console.log('addItemQuickReplies(itemId): ', JSON.stringify(addItemQuickReplies(itemId)));
   switch (action) {
     case enums.ADD_ITEM:
       response.message.text = `How many ${itemName} do you need?`;
