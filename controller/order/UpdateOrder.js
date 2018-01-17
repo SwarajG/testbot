@@ -1,10 +1,11 @@
 const Order = require('../../model/order');
 
 const updateOrder = (userId, item, cb) => {
-  Order.getOpenOrderByUserId(userId, (err, order) => {
+  Order.getOpenOrderByUserId(userId, (err, orderList) => {
     if (err) {
       console.log('Error in getting a order for user...');
     } else {
+      const order = orderList[0];
       const orderObjectId = order._id;
       order.itemList.push(item);
       console.log('updateOrder: ', JSON.stringify(order));
