@@ -10,7 +10,7 @@ const updateOrder = (userId, item, cb) => {
       order.itemList.push(item);
       Order
         .update(orderObjectId, order)
-        .then(cb)
+        .then(response => cb(null, response))
         .catch(updateErr => console.log('Error in updating order for user...', updateErr));
     }
   });
