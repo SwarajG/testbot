@@ -29,6 +29,7 @@ const prepareNextAction = (senderPsid, action, itemName, itemId) => {
     default:
       break;
   }
+  console.log(response);
   callSendAPI(senderPsid, response);
 };
 
