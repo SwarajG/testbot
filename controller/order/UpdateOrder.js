@@ -8,7 +8,6 @@ const updateOrder = (userId, item, cb) => {
       const order = orderList[0];
       const orderObjectId = order._id;
       order.itemList.push(item);
-      console.log('updateOrder: ', JSON.stringify(order));
       Order
         .update(orderObjectId, order)
         .then(cb)

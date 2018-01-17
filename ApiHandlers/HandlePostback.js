@@ -1,3 +1,5 @@
+import { setTimeout } from 'timers';
+
 const callSendAPI = require('./CallSendAPI');
 const GET_STARTED_RESPONSE = require('./Response/GetStarted');
 const GET_MENU_RESPONSE = require('./Response/Menu');
@@ -7,7 +9,47 @@ const SHOW_ROLLES_RESPONSE = require('./Response/Rolls');
 const SHOW_DESSERT_RESPONSE = require('./Response/Desserts');
 const SHOW_BEVERAGE_REPOSEN = require('./Response/Beverages');
 const orderController = require('../controller/order');
+const helper = require('../utils/helper');
 const itemList = require('../utils/itemList');
+const enums = require('../utils/enum');
+
+const addItemQuickReplies = () => (
+  [...Array(5).keys()].map(value => ({
+    content_type: 'text',
+    title: value + 1,
+    payload: `itemId_${value + 1}`,
+  }))
+);
+
+const prepareNextAction = (senderPsid, action, itemName, itemId) => {
+  const response = { message: { text: '', quick_replies: [] } };
+  switch (action) {
+    case enums.ADD_ITEM:
+      response.message.text = `How many ${itemName} do you need?`;
+      response.message.quick_replies = addItemQuickReplies(itemId);
+      break;
+    default:
+      break;
+  }
+  callSendAPI(senderPsid, response);
+};
+
+const getResponseTextForUser = (senderPsid, payload) => {
+  const argumentsForOrder = payload.split('_');
+  const action = argumentsForOrder[0];
+  const itemId = argumentsForOrder.slice(1, argumentsForOrder.length)[0];
+  const itemName = helper.getItemById(itemId);
+  let messageText = '';
+  switch (action) {
+    case enums.ADD_ITEM:
+      messageText = `Great! ${itemName} has been added to your cart!`;
+      break;
+    default:
+      break;
+  }
+  setTimeout(prepareNextAction(senderPsid, action, itemName, itemId), 300);
+  return messageText;
+};
 
 const getResponseForReply = (payload, senderPsid) => {
   const allItems = [];
@@ -25,7 +67,12 @@ const getResponseForReply = (payload, senderPsid) => {
         console.log('Successfully updated to the cart...', response);
       }
     });
-    return false;
+    const responseTextForUser = getResponseTextForUser(senderPsid, payload);
+    return {
+      message: {
+        text: responseTextForUser,
+      },
+    };
   }
   switch (payload) {
     case 'getstarted':
