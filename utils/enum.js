@@ -11,6 +11,7 @@ module.exports = {
     DELIVERED: 'delivered',
   },
   ADD_ITEM: 'addItem',
+  QUANTITY: 'quantity',
   DELETE_ITEM: 'deleteItem',
   PLACE_ORDER: 'placeOrder',
   ADD_ADDRESS: 'addAddress',

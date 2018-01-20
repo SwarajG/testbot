@@ -7,7 +7,11 @@ const updateOrder = (userId, item, cb) => {
     } else {
       const order = orderList[0];
       const orderObjectId = order._id;
-      order.itemList.push(item);
+      const itemId = item.itemList;
+      const isItemExists = order.itemList.find(tempItem => tempItem.itemId === itemId);
+      if (!isItemExists) {
+        order.itemList.push(item);
+      }
       Order
         .update(orderObjectId, order)
         .then(response => cb(null, response))

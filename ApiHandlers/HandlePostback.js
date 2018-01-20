@@ -10,12 +10,13 @@ const orderController = require('../controller/order');
 const helper = require('../utils/helper');
 const itemList = require('../utils/itemList');
 const enums = require('../utils/enum');
+const asyncCallSend = require('./AsyncCallSendApi');
 
-const addItemQuickReplies = () => (
+const addItemQuickReplies = itemId => (
   [...Array(5).keys()].map(value => ({
     content_type: 'text',
     title: value + 1,
-    payload: `itemId_${value + 1}`,
+    payload: `quantity_${itemId}_${value + 1}`,
   }))
 );
 
@@ -29,7 +30,7 @@ const prepareNextAction = (senderPsid, action, itemName, itemId) => {
     default:
       break;
   }
-  callSendAPI(senderPsid, response);
+  return response;
 };
 
 const getResponseTextForUser = (senderPsid, payload) => {
@@ -45,29 +46,42 @@ const getResponseTextForUser = (senderPsid, payload) => {
     default:
       break;
   }
-  prepareNextAction(senderPsid, action, itemName, itemId);
-  return messageText;
+  return {
+    messageText,
+    action,
+    itemName,
+    itemId,
+  };
 };
 
 const getResponseForReply = (payload, senderPsid) => {
+  const splitPayload = payload.split('_');
   const allItems = [];
   Object.values(itemList).forEach(itemInfoList => allItems.push(itemInfoList));
   const itemValueList = allItems
     .reduce((prevItem, currItem) => prevItem.concat(currItem), [])
     .map(item => item.value)
     .filter(itemValue => !!itemValue);
-  const value = payload.split('_')[1];
+  const value = splitPayload[1];
   if (itemValueList.indexOf(value) > -1) {
     orderController.handleOrderState(senderPsid, payload, (err) => {
       if (err) {
         console.log('Sorry, not able to update to cart...', err);
       }
       console.log('Successfully updated to the cart...');
-      const responseTextForUser = getResponseTextForUser(senderPsid, payload);
+      const {
+        messageText,
+        action,
+        itemName,
+        itemId,
+      } = getResponseTextForUser(senderPsid, payload);
+      const responseTextForUser = messageText;
       const choiceResponse = {
         text: responseTextForUser,
       };
-      callSendAPI(senderPsid, choiceResponse);
+      const newResponse = prepareNextAction(senderPsid, action, itemName, itemId);
+      asyncCallSend(senderPsid, newResponse)
+        .then(() => asyncCallSend(senderPsid, choiceResponse));
     });
   }
   switch (payload) {
