@@ -9,5 +9,7 @@ module.exports = (senderPsid, receivedMessage) => {
       text: 'hello',
     };
   }
-  callSendAPI(senderPsid, response);
+  setTimeout(() => {
+    callSendAPI(senderPsid, response);
+  }, 1000);
 };
