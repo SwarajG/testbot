@@ -71,6 +71,11 @@ const getResponseForReply = (payload, senderPsid) => {
       };
       callSendAPI(senderPsid, choiceResponse);
     });
+    return {
+      message: {
+        text: 'HEllo World',
+      },
+    };
   }
   switch (payload) {
     case 'getstarted':

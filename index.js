@@ -4,13 +4,10 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const ApiHandlers = require('./ApiHandlers');
 const config = require('./config');
-const expressLogging = require('express-logging');
-const logger = require('logops');
 // const Order = require('./model/order');
 // const SetupHandlers = require('./SetupHandlers');
 
 const app = express().use(bodyParser.json());
-app.use(expressLogging(logger));
 
 // app.get('/setup', (req, res) => {
 //   SetupHandlers.setupGetStartedButton(res);
