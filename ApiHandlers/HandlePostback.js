@@ -23,8 +23,8 @@ const prepareNextAction = (senderPsid, action, itemName, itemId) => {
   const response = { text: '', quick_replies: [] };
   switch (action) {
     case enums.ADD_ITEM:
-      response.message.text = `How many ${itemName} do you need?`;
-      response.message.quick_replies = addItemQuickReplies(itemId);
+      response.text = `How many ${itemName} do you need?`;
+      response.quick_replies = addItemQuickReplies(itemId);
       break;
     default:
       break;
