@@ -21,7 +21,6 @@ const addItemQuickReplies = () => (
 
 const prepareNextAction = (senderPsid, action, itemName, itemId) => {
   const response = { message: { text: '', quick_replies: [] } };
-  console.log('addItemQuickReplies(itemId): ', JSON.stringify(addItemQuickReplies(itemId)));
   switch (action) {
     case enums.ADD_ITEM:
       response.message.text = `How many ${itemName} do you need?`;
@@ -30,7 +29,6 @@ const prepareNextAction = (senderPsid, action, itemName, itemId) => {
     default:
       break;
   }
-  console.log(response);
   callSendAPI(senderPsid, response);
 };
 
@@ -39,7 +37,6 @@ const getResponseTextForUser = (senderPsid, payload) => {
   const action = argumentsForOrder[0];
   const itemId = argumentsForOrder.slice(1, argumentsForOrder.length)[0];
   const itemName = helper.getItemById(itemId).name;
-  console.log('item: ', helper.getItemById(itemId));
   let messageText = '';
   switch (action) {
     case enums.ADD_ITEM:
@@ -48,7 +45,7 @@ const getResponseTextForUser = (senderPsid, payload) => {
     default:
       break;
   }
-  prepareNextAction(senderPsid, action, itemName, itemId);
+  // prepareNextAction(senderPsid, action, itemName, itemId);
   return messageText;
 };
 
@@ -60,7 +57,6 @@ const getResponseForReply = (payload, senderPsid) => {
     .map(item => item.value)
     .filter(itemValue => !!itemValue);
   const value = payload.split('_')[1];
-  console.log('senderPsid, payload', senderPsid, payload);
   if (itemValueList.indexOf(value) > -1) {
     orderController.handleOrderState(senderPsid, payload, (err, response) => {
       if (err) {
