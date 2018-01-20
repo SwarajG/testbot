@@ -80,6 +80,7 @@ const getResponseForReply = (payload, senderPsid) => {
         text: responseTextForUser,
       };
       const newResponse = prepareNextAction(senderPsid, action, itemName, itemId);
+      console.log(newResponse);
       asyncCallSend(senderPsid, newResponse)
         .then(() => asyncCallSend(senderPsid, choiceResponse));
     });
