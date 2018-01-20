@@ -99,5 +99,7 @@ const getResponseForReply = (payload, senderPsid) => {
 module.exports = (senderPsid, receivedPostback) => {
   const { payload } = receivedPostback;
   const response = getResponseForReply(payload, senderPsid);
-  callSendAPI(senderPsid, response);
+  if (response) {
+    callSendAPI(senderPsid, response);
+  }
 };
