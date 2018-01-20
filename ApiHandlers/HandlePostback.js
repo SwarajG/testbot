@@ -20,7 +20,7 @@ const addItemQuickReplies = () => (
 );
 
 const prepareNextAction = (senderPsid, action, itemName, itemId) => {
-  const response = { message: { text: '', quick_replies: [] } };
+  const response = { text: '', quick_replies: [] };
   switch (action) {
     case enums.ADD_ITEM:
       response.message.text = `How many ${itemName} do you need?`;
@@ -45,7 +45,7 @@ const getResponseTextForUser = (senderPsid, payload) => {
     default:
       break;
   }
-  // prepareNextAction(senderPsid, action, itemName, itemId);
+  prepareNextAction(senderPsid, action, itemName, itemId);
   return messageText;
 };
 
@@ -58,16 +58,14 @@ const getResponseForReply = (payload, senderPsid) => {
     .filter(itemValue => !!itemValue);
   const value = payload.split('_')[1];
   if (itemValueList.indexOf(value) > -1) {
-    orderController.handleOrderState(senderPsid, payload, (err, response) => {
+    orderController.handleOrderState(senderPsid, payload, (err) => {
       if (err) {
         console.log('Sorry, not able to update to cart...', err);
       }
-      console.log('Successfully updated to the cart...', response);
+      console.log('Successfully updated to the cart...');
       const responseTextForUser = getResponseTextForUser(senderPsid, payload);
       const choiceResponse = {
-        message: {
-          text: responseTextForUser,
-        },
+        text: responseTextForUser,
       };
       callSendAPI(senderPsid, choiceResponse);
     });
