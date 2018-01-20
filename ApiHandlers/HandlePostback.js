@@ -48,7 +48,7 @@ const getResponseTextForUser = (senderPsid, payload) => {
     default:
       break;
   }
-  setTimeout(() => prepareNextAction(senderPsid, action, itemName, itemId), 300);
+  prepareNextAction(senderPsid, action, itemName, itemId);
   return messageText;
 };
 
@@ -60,6 +60,7 @@ const getResponseForReply = (payload, senderPsid) => {
     .map(item => item.value)
     .filter(itemValue => !!itemValue);
   const value = payload.split('_')[1];
+  console.log('senderPsid, payload', senderPsid, payload);
   if (itemValueList.indexOf(value) > -1) {
     orderController.handleOrderState(senderPsid, payload, (err, response) => {
       if (err) {
