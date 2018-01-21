@@ -19,6 +19,7 @@ const handleOrderStatus = (userId, payload, cb) => {
         itemId,
         quantity,
       } = splitPaylod.slice(1, splitPaylod.length);
+      console.log(itemId, quantity);
       addQuantityForItem(userId, itemId, quantity, cb);
       break;
     }
