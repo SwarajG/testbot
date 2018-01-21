@@ -14,38 +14,40 @@ const showCurrentOrderCart = (userId) => {
     const response = {
       attachment: {
         type: 'template',
-        template_type: 'generic',
-        elements: order.itemList.map((item) => {
-          const itemImage = helper.getItemById(item.itemId).image;
-          const {
-            itemId,
-            name,
-            price,
-            quantity,
-          } = item;
-          return {
-            title: name,
-            subtitle: `Price: ${price}Rs, Quantity: ${quantity}`,
-            image_url: itemImage,
-            buttons: [{
-              type: 'postback',
-              title: 'Place Order',
-              payload: 'place-order',
-            }, {
-              type: 'postback',
-              title: 'Change Quantity',
-              payload: `${enums.CHANGE_QUANTITY}_${itemId}`,
-            }, {
-              type: 'postback',
-              title: 'Remove from cart',
-              payload: `${enums.DELETE_ITEM}`,
-            }, {
-              type: 'postback',
-              title: 'Back to menu',
-              payload: 'show-menu',
-            }],
-          };
-        }),
+        payload: {
+          template_type: 'generic',
+          elements: order.itemList.map((item) => {
+            const itemImage = helper.getItemById(item.itemId).image;
+            const {
+              itemId,
+              name,
+              price,
+              quantity,
+            } = item;
+            return {
+              title: name,
+              subtitle: `Price: ${price}Rs, Quantity: ${quantity}`,
+              image_url: itemImage,
+              buttons: [{
+                type: 'postback',
+                title: 'Place Order',
+                payload: 'place-order',
+              }, {
+                type: 'postback',
+                title: 'Change Quantity',
+                payload: `${enums.CHANGE_QUANTITY}_${itemId}`,
+              }, {
+                type: 'postback',
+                title: 'Remove from cart',
+                payload: `${enums.DELETE_ITEM}`,
+              }, {
+                type: 'postback',
+                title: 'Back to menu',
+                payload: 'show-menu',
+              }],
+            };
+          }),
+        },
       },
     };
     console.log(response);
