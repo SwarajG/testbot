@@ -12,7 +12,8 @@ const showCurrentOrderCart = (userId) => {
     const order = orderList[0];
     const response = {
       attachment: {
-        type: 'generic',
+        type: 'template',
+        template_type: 'generic',
         elements: order.itemList.map((item) => {
           const itemImage = helper.getItemById(item.itemId).image;
           const {
