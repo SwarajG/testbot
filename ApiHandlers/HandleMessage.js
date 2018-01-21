@@ -3,20 +3,20 @@ const orderController = require('../controller/order');
 
 module.exports = (senderPsid, receivedMessage) => {
   let response;
-  const receivedResponse = receivedMessage.text;
-  console.log();
-  if (receivedResponse) {
-    if (receivedMessage.quick_reply.payload) {
-      const splitesMessage = receivedResponse.split('_');
+  console.log(receivedMessage);
+  if (receivedMessage.quick_reply) {
+    const quickReply = receivedMessage.quick_reply;
+    if (quickReply.payload) {
+      const splitesMessage = quickReply.split('_');
       if (splitesMessage[0] === 'quantity') {
-        orderController.handleOrderState(senderPsid, receivedResponse, (err) => {
+        orderController.handleOrderState(senderPsid, quickReply, (err) => {
           if (err) {
             console.log('Sorry, not able to update to cart...', err);
           }
           console.log('Successfully updated to the cart...');
         });
       }
-    } else {
+    } else if (receivedMessage.text) {
       response = {
         text: 'hello',
       };
