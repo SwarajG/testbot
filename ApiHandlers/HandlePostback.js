@@ -83,8 +83,10 @@ const getResponseForReply = (payload, senderPsid) => {
       console.log('choiceResponse: ', choiceResponse);
       const newResponse = prepareNextAction(senderPsid, action, itemName, itemId);
       console.log(newResponse);
-      asyncCallSend(senderPsid, choiceResponse)
-        .then(() => asyncCallSend(senderPsid, newResponse));
+      callSendAPI(senderPsid, choiceResponse);
+      callSendAPI(senderPsid, newResponse);
+      // asyncCallSend(senderPsid, choiceResponse)
+      //   .then(() => asyncCallSend(senderPsid, newResponse));
     });
   } else {
     switch (payload) {
