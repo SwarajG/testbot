@@ -14,7 +14,7 @@ module.exports = (senderPsid, receivedMessage) => {
       console.log(payload);
       if (payload === 'show-menu') {
         const newResponse = getResponseForReply(payload, senderPsid);
-        if (response) {
+        if (newResponse) {
           callSendAPI(senderPsid, newResponse);
         }
       } else {
