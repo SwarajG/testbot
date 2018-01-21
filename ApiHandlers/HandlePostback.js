@@ -110,10 +110,13 @@ const getResponseForReply = (payload, senderPsid) => {
   }
 };
 
-module.exports = (senderPsid, receivedPostback) => {
-  const { payload } = receivedPostback;
-  const response = getResponseForReply(payload, senderPsid);
-  if (response) {
-    callSendAPI(senderPsid, response);
-  }
+module.exports = {
+  handlePostback: (senderPsid, receivedPostback) => {
+    const { payload } = receivedPostback;
+    const response = getResponseForReply(payload, senderPsid);
+    if (response) {
+      callSendAPI(senderPsid, response);
+    }
+  },
+  getResponseForReply,
 };
