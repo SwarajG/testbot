@@ -23,7 +23,7 @@ const handleOrderStatus = (userId, payload, cb) => {
       break;
     }
     case enums.DELETE_ITEM:
-      deleteItemFromCart(userId, valueOfItem, cb);
+      deleteItemFromCart(userId, valueOfItem[0], cb);
       break;
     case enums.ADD_ADDRESS:
       addAddressForOrder(userId, valueOfItem, cb);

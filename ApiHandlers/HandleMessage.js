@@ -30,7 +30,7 @@ const getElemets = order => order.itemList.map((item) => {
     }, {
       type: 'postback',
       title: 'Remove from cart',
-      payload: `${enums.DELETE_ITEM}`,
+      payload: `${enums.DELETE_ITEM}_${itemId}`,
     }],
   };
 });
@@ -50,7 +50,6 @@ const showCurrentOrderCart = (userId) => {
           },
         },
       };
-      console.log(response, JSON.stringify(response.attachment.payload.elements));
       callSendAPI(userId, response);
     }
   });
