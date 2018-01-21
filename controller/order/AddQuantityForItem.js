@@ -9,7 +9,7 @@ const addQuantityForItem = (userId, itemId, quantity, cb) => {
     const order = _.cloneDeep(orderList[0]);
     const orderObjectId = order._id;
     const newOrderList = order.itemList.map((item) => {
-      if (item.itemId === item) {
+      if (item.itemId === itemId) {
         const clonedItem = _.cloneDeep(item);
         clonedItem.quantity = quantity;
       }

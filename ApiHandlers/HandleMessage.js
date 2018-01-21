@@ -12,9 +12,9 @@ module.exports = (senderPsid, receivedMessage) => {
       if (splitesMessage[0] === 'quantity') {
         orderController.handleOrderState(senderPsid, payload, (err) => {
           if (err) {
-            console.log('Sorry, not able to update to cart...', err);
+            console.log('Sorry, not able to update the quantity...', err);
           }
-          console.log('Successfully updated to the cart..');
+          console.log('Successfully updated to the quantity...');
         });
       }
     }
