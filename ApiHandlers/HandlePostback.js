@@ -100,6 +100,8 @@ const getResponseForReply = (payload, senderPsid) => {
         return SHOW_DESSERT_RESPONSE;
       case 'show-beverages':
         return SHOW_BEVERAGE_REPOSEN;
+      case 'show-cart':
+        return {};
       default:
         return {
           text: 'Sorry, not able to catch your response, please try from the given options',
