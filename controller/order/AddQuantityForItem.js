@@ -12,6 +12,7 @@ const addQuantityForItem = (userId, itemId, quantity, cb) => {
       if (item.itemId === itemId) {
         const clonedItem = _.cloneDeep(item);
         clonedItem.quantity = quantity;
+        return clonedItem;
       }
       return item;
     });
