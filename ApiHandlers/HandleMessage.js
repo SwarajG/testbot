@@ -13,7 +13,10 @@ module.exports = (senderPsid, receivedMessage) => {
     if (payload) {
       console.log(payload);
       if (payload === 'show-menu') {
-        getResponseForReply(payload, senderPsid);
+        const newResponse = getResponseForReply(payload, senderPsid);
+        if (response) {
+          callSendAPI(senderPsid, newResponse);
+        }
       } else {
         const splitesMessage = payload.split('_');
         const [action, itemId, quantity] = splitesMessage;
