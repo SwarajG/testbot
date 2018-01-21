@@ -80,10 +80,11 @@ const getResponseForReply = (payload, senderPsid) => {
       const choiceResponse = {
         text: responseTextForUser,
       };
+      console.log('choiceResponse: ', choiceResponse);
       const newResponse = prepareNextAction(senderPsid, action, itemName, itemId);
       console.log(newResponse);
-      asyncCallSend(senderPsid, newResponse)
-        .then(() => asyncCallSend(senderPsid, choiceResponse));
+      asyncCallSend(senderPsid, choiceResponse)
+        .then(() => asyncCallSend(senderPsid, newResponse));
     });
   } else {
     switch (payload) {
