@@ -11,6 +11,7 @@ module.exports = (senderPsid, receivedMessage) => {
     const quickReply = receivedMessage.quick_reply;
     const { payload } = quickReply;
     if (payload) {
+      console.log(payload);
       if (payload === 'show-menu') {
         getResponseForReply(payload, senderPsid);
       } else {
