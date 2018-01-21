@@ -1,10 +1,11 @@
 const Order = require('../../model/order');
 
 const deleteItemFromCart = (userId, itemId, cb) => {
-  Order.getOpenOrderByUserId(userId, (err, order) => {
+  Order.getOpenOrderByUserId(userId, (err, orderList) => {
     if (err) {
       console.log('Error in getting order...');
     } else {
+      const order = orderList[0];
       const orderObjectId = order._id;
       const newItemList = order.itemList.filter(item => item.itemId !== itemId);
       const updatedOrder = Object.assign(order, { itemList: newItemList });

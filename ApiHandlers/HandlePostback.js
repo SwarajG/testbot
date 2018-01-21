@@ -11,6 +11,7 @@ const helper = require('../utils/helper');
 const itemList = require('../utils/itemList');
 const enums = require('../utils/enum');
 const asyncCallSend = require('./AsyncCallSendApi');
+const Order = require('../model/order');
 
 const addItemQuickReplies = itemId => (
   [...Array(5).keys()].map(value => ({
@@ -19,6 +20,49 @@ const addItemQuickReplies = itemId => (
     payload: `quantity_${itemId}_${value + 1}`,
   }))
 );
+
+const showCurrentOrderCart = (userId) => {
+  Order.getOpenOrderByUserId(userId, (err, orderList) => {
+    const order = orderList[0];
+    const response = {
+      attachment: {
+        type: 'generic',
+        elements: order.itemList.map((item) => {
+          const itemImage = helper.getItemById(item.itemId).image;
+          const {
+            itemId,
+            name,
+            price,
+            quantity,
+          } = item;
+          return {
+            title: name,
+            subtitle: `Price: ${price}Rs, Quantity: ${quantity}`,
+            image_url: itemImage,
+            buttons: [{
+              type: 'postback',
+              title: 'Place Order',
+              payload: 'place-order',
+            }, {
+              type: 'postback',
+              title: 'Change Quantity',
+              payload: `${enums.CHANGE_QUANTITY}_${itemId}`,
+            }, {
+              type: 'postback',
+              title: 'Remove from cart',
+              payload: `${enums.DELETE_ITEM}`,
+            }, {
+              type: 'postback',
+              title: 'Back to menu',
+              payload: 'show-menu',
+            }],
+          };
+        }),
+      },
+    };
+    callSendAPI(userId, response);
+  });
+};
 
 const prepareNextAction = (senderPsid, action, itemName, itemId) => {
   const response = { text: '', quick_replies: [] };
@@ -101,7 +145,7 @@ const getResponseForReply = (payload, senderPsid) => {
       case 'show-beverages':
         return SHOW_BEVERAGE_REPOSEN;
       case 'show-cart':
-        return {};
+        return showCurrentOrderCart(senderPsid);
       default:
         return {
           text: 'Sorry, not able to catch your response, please try from the given options',
