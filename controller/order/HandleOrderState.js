@@ -1,9 +1,11 @@
+const callSendAPI = require('../../ApiHandlers/CallSendAPI');
 const enums = require('../../utils/enum');
 const addItemToCart = require('./AddItemToCart');
 const deleteItemFromCart = require('./DeleteItemFromCart');
 const addQuantityForItem = require('./AddQuantityForItem');
 const placeOrderForUser = require('./PlaceOrderForUser');
 const addAddressForOrder = require('./AddAddressForOrder');
+const changeQuantityForItem = require('../../ApiHandlers/ChangeQuantityForItem');
 
 const handleOrderStatus = (userId, payload, cb) => {
   const argumentsForOrder = payload.split('_');
@@ -25,6 +27,11 @@ const handleOrderStatus = (userId, payload, cb) => {
     case enums.DELETE_ITEM:
       deleteItemFromCart(userId, valueOfItem, cb);
       break;
+    case enums.CHANGE_QUANTITY: {
+      const response = changeQuantityForItem(valueOfItem);
+      callSendAPI(userId, response);
+      break;
+    }
     case enums.ADD_ADDRESS:
       addAddressForOrder(userId, valueOfItem, cb);
       break;

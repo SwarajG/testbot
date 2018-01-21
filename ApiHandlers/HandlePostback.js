@@ -12,25 +12,15 @@ const itemList = require('../utils/itemList');
 const enums = require('../utils/enum');
 const asyncCallSend = require('./AsyncCallSendApi');
 const showCurrentOrderCart = require('./ShowCurrentOrderCart');
-
-const addItemQuickReplies = itemId => (
-  [...Array(5).keys()].map(value => ({
-    content_type: 'text',
-    title: value + 1,
-    payload: `quantity_${itemId}_${value + 1}`,
-  }))
-);
+const changeQuantityForItem = require('./ChangeQuantityForItem');
 
 const prepareNextAction = (senderPsid, action, itemName, itemId) => {
   let response = {};
   let cb = null;
   switch (action) {
-    case enums.ADD_ITEM: {
-      response = { text: '', quick_replies: [] };
-      response.text = `How many ${itemName} do you need?`;
-      response.quick_replies = addItemQuickReplies(itemId);
+    case enums.ADD_ITEM:
+      response = changeQuantityForItem(itemId);
       break;
-    }
     case enums.DELETE_ITEM: {
       response.text = 'Here is your cart';
       cb = showCurrentOrderCart;
