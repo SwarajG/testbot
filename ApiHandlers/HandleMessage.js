@@ -4,6 +4,51 @@ const helper = require('../utils/helper');
 const continueOrder = require('./Response/ContinueOrder');
 const asyncCallSend = require('../ApiHandlers/AsyncCallSendApi');
 const { getResponseForReply } = require('./HandlePostback');
+const enums = require('../utils/enum');
+const Order = require('../model/order');
+
+const showCurrentOrderCart = (userId) => {
+  Order.getOpenOrderByUserId(userId, (err, orderList) => {
+    const order = orderList[0];
+    const response = {
+      attachment: {
+        type: 'generic',
+        elements: order.itemList.map((item) => {
+          const itemImage = helper.getItemById(item.itemId).image;
+          const {
+            itemId,
+            name,
+            price,
+            quantity,
+          } = item;
+          return {
+            title: name,
+            subtitle: `Price: ${price}Rs, Quantity: ${quantity}`,
+            image_url: itemImage,
+            buttons: [{
+              type: 'postback',
+              title: 'Place Order',
+              payload: 'place-order',
+            }, {
+              type: 'postback',
+              title: 'Change Quantity',
+              payload: `${enums.CHANGE_QUANTITY}_${itemId}`,
+            }, {
+              type: 'postback',
+              title: 'Remove from cart',
+              payload: `${enums.DELETE_ITEM}`,
+            }, {
+              type: 'postback',
+              title: 'Back to menu',
+              payload: 'show-menu',
+            }],
+          };
+        }),
+      },
+    };
+    callSendAPI(userId, response);
+  });
+};
 
 module.exports = (senderPsid, receivedMessage) => {
   let response;
@@ -17,6 +62,8 @@ module.exports = (senderPsid, receivedMessage) => {
         if (newResponse) {
           callSendAPI(senderPsid, newResponse);
         }
+      } else if (payload === 'show-cart') {
+        showCurrentOrderCart(senderPsid);
       } else {
         const splitesMessage = payload.split('_');
         const [action, itemId, quantity] = splitesMessage;

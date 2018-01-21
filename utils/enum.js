@@ -15,4 +15,5 @@ module.exports = {
   DELETE_ITEM: 'deleteItem',
   PLACE_ORDER: 'placeOrder',
   ADD_ADDRESS: 'addAddress',
+  CHANGE_QUANTITY: 'changeQuantity',
 };
