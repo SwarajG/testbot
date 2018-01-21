@@ -11,6 +11,7 @@ const helper = require('../utils/helper');
 const itemList = require('../utils/itemList');
 const enums = require('../utils/enum');
 const asyncCallSend = require('./AsyncCallSendApi');
+const { showCurrentOrderCart } = require('./HandleMessage');
 
 const addItemQuickReplies = itemId => (
   [...Array(5).keys()].map(value => ({
@@ -21,12 +22,19 @@ const addItemQuickReplies = itemId => (
 );
 
 const prepareNextAction = (senderPsid, action, itemName, itemId) => {
-  const response = { text: '', quick_replies: [] };
+  let response = {};
   switch (action) {
-    case enums.ADD_ITEM:
+    case enums.ADD_ITEM: {
+      response = { text: '', quick_replies: [] };
       response.text = `How many ${itemName} do you need?`;
       response.quick_replies = addItemQuickReplies(itemId);
       break;
+    }
+    case enums.DELETE_ITEM: {
+      response.text = 'Here is your cart';
+      showCurrentOrderCart(senderPsid);
+      break;
+    }
     default:
       break;
   }
@@ -42,6 +50,9 @@ const getResponseTextForUser = (senderPsid, payload) => {
   switch (action) {
     case enums.ADD_ITEM:
       messageText = `Great! ${itemName} has been added to your cart!`;
+      break;
+    case enums.DELETE_ITEM:
+      messageText = `${itemName} successfully removed from your cart!`;
       break;
     default:
       break;
