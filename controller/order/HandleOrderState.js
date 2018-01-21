@@ -14,11 +14,11 @@ const handleOrderStatus = (userId, payload, cb) => {
       addItemToCart(userId, valueOfItem, cb);
       break;
     case enums.QUANTITY: {
-      const splitPaylod = payload.split('_');
-      const {
+      const splitPayload = payload.split('_');
+      const [
         itemId,
         quantity,
-      } = splitPaylod.slice(1, splitPaylod.length);
+      ] = splitPayload.slice(1, splitPayload.length);
       console.log(itemId, quantity);
       addQuantityForItem(userId, itemId, quantity, cb);
       break;
