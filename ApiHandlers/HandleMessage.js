@@ -3,7 +3,7 @@ const orderController = require('../controller/order');
 
 module.exports = (senderPsid, receivedMessage) => {
   let response;
-  console.log(receivedMessage);
+  console.log('receivedMessage: ', receivedMessage);
   if (receivedMessage.quick_reply) {
     const quickReply = receivedMessage.quick_reply;
     if (quickReply.payload) {
