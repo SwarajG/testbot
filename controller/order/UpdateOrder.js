@@ -9,13 +9,13 @@ const updateOrder = (userId, item, cb) => {
       const orderObjectId = order._id;
       const { itemId } = item;
       const isItemExists = order.itemList.find(tempItem => tempItem.itemId === itemId);
-      if (!isItemExists) {
-        order.itemList.push(item);
-        Order
-          .update(orderObjectId, order)
-          .then(response => cb(null, response))
-          .catch(updateErr => console.log('Error in updating order for user...', updateErr));
-      }
+      // if (!isItemExists) {
+      order.itemList.push(item);
+      Order
+        .update(orderObjectId, order)
+        .then(response => cb(null, response))
+        .catch(updateErr => console.log('Error in updating order for user...', updateErr));
+      // }
     }
   });
 };
