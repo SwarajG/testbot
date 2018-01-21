@@ -4,7 +4,7 @@ const updateOrder = (userId, item, cb) => {
   Order.getOpenOrderByUserId(userId, (err, orderList) => {
     if (err) {
       console.log('Error in getting a order for user...');
-    } else {
+    } else if (orderList.length) {
       const order = orderList[0];
       const orderObjectId = order._id;
       const { itemId } = item;

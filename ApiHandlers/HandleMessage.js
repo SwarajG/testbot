@@ -14,7 +14,7 @@ module.exports = (senderPsid, receivedMessage) => {
           if (err) {
             console.log('Sorry, not able to update to cart...', err);
           }
-          console.log('Successfully updated to the cart...');
+          console.log('Successfully updated to the cart..');
         });
       }
     }
