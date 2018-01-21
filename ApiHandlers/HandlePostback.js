@@ -86,7 +86,8 @@ const getResponseForReply = (payload, senderPsid) => {
       // const callBack = callSendAPI(senderPsid, newResponse);
       // callSendAPI(senderPsid, choiceResponse, cb);
       asyncCallSend(senderPsid, choiceResponse)
-        .then(() => asyncCallSend(senderPsid, newResponse));
+        .then(() => asyncCallSend(senderPsid, newResponse))
+        .catch(error => console.log(error));
     });
   } else {
     switch (payload) {

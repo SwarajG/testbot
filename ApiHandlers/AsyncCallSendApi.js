@@ -1,8 +1,4 @@
-const fetch = require('node-fetch');
-const url = require('url');
-
-const { URLSearchParams } = url;
-const params = new URLSearchParams();
+const rp = require('request-promise');
 
 const { PAGE_ACCESS_TOKEN } = process.env;
 
@@ -13,10 +9,13 @@ const getCallSendPromise = (senderPsid, message) => {
     },
     message,
   };
-  params.append('access_token', PAGE_ACCESS_TOKEN);
-  return fetch('https://graph.facebook.com/v2.10/me/messages', {
+  return rp({
+    uri: 'https://graph.facebook.com/v2.10/me/messages',
+    qs: {
+      access_token: PAGE_ACCESS_TOKEN,
+    },
     method: 'POST',
-    body: JSON.stringify(requestBody),
+    json: requestBody,
   });
 };
 
