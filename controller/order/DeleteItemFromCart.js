@@ -8,8 +8,8 @@ const deleteItemFromCart = (userId, itemId, cb) => {
     } else {
       const order = orderList[0];
       const orderObjectId = order._id;
-      const newItemList = order.itemList.filter(item => item.itemId !== itemId);
       const newOrder = _.cloneDeep(order);
+      const newItemList = newOrder.itemList.filter(item => item.itemId !== itemId);
       newOrder.itemList = newItemList;
       Order
         .update(orderObjectId, newOrder)
