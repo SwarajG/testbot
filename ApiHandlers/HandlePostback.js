@@ -85,26 +85,27 @@ const getResponseForReply = (payload, senderPsid) => {
       asyncCallSend(senderPsid, newResponse)
         .then(() => asyncCallSend(senderPsid, choiceResponse));
     });
-  }
-  switch (payload) {
-    case 'getstarted':
-      return GET_STARTED_RESPONSE;
-    case 'show-menu':
-      return GET_MENU_RESPONSE;
-    case 'show-combos':
-      return SHOW_COMBOS_RESPONSE;
-    case 'show-biryani':
-      return SHOW_BIRYANI_REPONSE;
-    case 'show-rolls':
-      return SHOW_ROLLES_RESPONSE;
-    case 'show-dessert':
-      return SHOW_DESSERT_RESPONSE;
-    case 'show-beverages':
-      return SHOW_BEVERAGE_REPOSEN;
-    default:
-      return {
-        text: 'Sorry, not able to catch your response, please try from the given options',
-      };
+  } else {
+    switch (payload) {
+      case 'getstarted':
+        return GET_STARTED_RESPONSE;
+      case 'show-menu':
+        return GET_MENU_RESPONSE;
+      case 'show-combos':
+        return SHOW_COMBOS_RESPONSE;
+      case 'show-biryani':
+        return SHOW_BIRYANI_REPONSE;
+      case 'show-rolls':
+        return SHOW_ROLLES_RESPONSE;
+      case 'show-dessert':
+        return SHOW_DESSERT_RESPONSE;
+      case 'show-beverages':
+        return SHOW_BEVERAGE_REPOSEN;
+      default:
+        return {
+          text: 'Sorry, not able to catch your response, please try from the given options',
+        };
+    }
   }
 };
 
