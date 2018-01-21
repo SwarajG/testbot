@@ -7,7 +7,8 @@ module.exports = (senderPsid, receivedMessage) => {
   if (receivedMessage.quick_reply) {
     const quickReply = receivedMessage.quick_reply;
     if (quickReply.payload) {
-      const splitesMessage = quickReply.split('_');
+      const paylod = quickReply.payload;
+      const splitesMessage = paylod.split('_');
       if (splitesMessage[0] === 'quantity') {
         orderController.handleOrderState(senderPsid, quickReply, (err) => {
           if (err) {
