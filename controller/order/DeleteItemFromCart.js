@@ -1,4 +1,5 @@
 const Order = require('../../model/order');
+const _ = require('lodash');
 
 const deleteItemFromCart = (userId, itemId, cb) => {
   Order.getOpenOrderByUserId(userId, (err, orderList) => {
@@ -8,9 +9,10 @@ const deleteItemFromCart = (userId, itemId, cb) => {
       const order = orderList[0];
       const orderObjectId = order._id;
       const newItemList = order.itemList.filter(item => item.itemId !== itemId);
-      const updatedOrder = Object.assign(order, { itemList: newItemList });
+      const newOrder = _.cloneDeep(order);
+      newOrder.temList = newItemList;
       Order
-        .update(orderObjectId, updatedOrder)
+        .update(orderObjectId, newOrder)
         .then(cb)
         .catch(updateErr => console.log('Error in updating order for user...', updateErr));
     }
