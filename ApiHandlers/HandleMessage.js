@@ -5,8 +5,10 @@ module.exports = (senderPsid, receivedMessage) => {
   let response;
   console.log(receivedMessage);
   if (receivedMessage.quick_reply) {
+    console.log('reply', receivedMessage.quick_reply);
     const quickReply = receivedMessage.quick_reply;
     if (quickReply.payload) {
+      console.log('payload: ', quickReply.payload);
       const paylod = quickReply.payload;
       const splitesMessage = paylod.split('_');
       if (splitesMessage[0] === 'quantity') {
@@ -17,7 +19,7 @@ module.exports = (senderPsid, receivedMessage) => {
           console.log('Successfully updated to the cart...');
         });
       }
-    } else if (receivedMessage.text) {
+    } else {
       response = {
         text: 'hello',
       };
