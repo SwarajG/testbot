@@ -55,6 +55,7 @@ const getResponseTextForUser = (senderPsid, payload) => {
 };
 
 const getResponseForReply = (payload, senderPsid) => {
+  console.log(payload);
   const splitPayload = payload.split('_');
   const allItems = [];
   Object.values(itemList).forEach(itemInfoList => allItems.push(itemInfoList));
