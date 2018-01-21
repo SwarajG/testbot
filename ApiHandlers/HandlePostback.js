@@ -55,6 +55,7 @@ const getResponseTextForUser = (senderPsid, payload) => {
 };
 
 const getResponseForReply = (payload, senderPsid) => {
+  console.log(payload);
   const splitPayload = payload.split('_');
   const allItems = [];
   Object.values(itemList).forEach(itemInfoList => allItems.push(itemInfoList));
@@ -102,9 +103,7 @@ const getResponseForReply = (payload, senderPsid) => {
       return SHOW_BEVERAGE_REPOSEN;
     default:
       return {
-        message: {
-          text: 'Sorry, not able to catch your response, please try from the given options',
-        },
+        text: 'Sorry, not able to catch your response, please try from the given options',
       };
   }
 };

@@ -11,11 +11,11 @@ const updateOrder = (userId, item, cb) => {
       const isItemExists = order.itemList.find(tempItem => tempItem.itemId === itemId);
       if (!isItemExists) {
         order.itemList.push(item);
+        Order
+          .update(orderObjectId, order)
+          .then(response => cb(null, response))
+          .catch(updateErr => console.log('Error in updating order for user...', updateErr));
       }
-      Order
-        .update(orderObjectId, order)
-        .then(response => cb(null, response))
-        .catch(updateErr => console.log('Error in updating order for user...', updateErr));
     }
   });
 };

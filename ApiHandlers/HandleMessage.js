@@ -5,8 +5,8 @@ module.exports = (senderPsid, receivedMessage) => {
   let response;
   const receivedResponse = receivedMessage.text;
   console.log(receivedMessage);
-  const splitesMessage = receivedResponse.split('_');
   if (receivedResponse) {
+    const splitesMessage = receivedResponse.split('_');
     if (splitesMessage[0] === 'quantity') {
       orderController.handleOrderState(senderPsid, receivedResponse, (err) => {
         if (err) {
