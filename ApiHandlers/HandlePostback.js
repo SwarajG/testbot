@@ -23,6 +23,7 @@ const addItemQuickReplies = itemId => (
 
 const prepareNextAction = (senderPsid, action, itemName, itemId) => {
   let response = {};
+  let cb = null;
   switch (action) {
     case enums.ADD_ITEM: {
       response = { text: '', quick_replies: [] };
@@ -32,13 +33,16 @@ const prepareNextAction = (senderPsid, action, itemName, itemId) => {
     }
     case enums.DELETE_ITEM: {
       response.text = 'Here is your cart';
-      showCurrentOrderCart(senderPsid);
+      cb = showCurrentOrderCart;
       break;
     }
     default:
       break;
   }
-  return response;
+  return {
+    response,
+    cb,
+  };
 };
 
 const getResponseTextForUser = (senderPsid, payload) => {
@@ -90,9 +94,10 @@ const getResponseForReply = (payload, senderPsid) => {
       const choiceResponse = {
         text: responseTextForUser,
       };
-      const newResponse = prepareNextAction(senderPsid, action, itemName, itemId);
+      const { response: newResponse, cb } = prepareNextAction(senderPsid, action, itemName, itemId);
       asyncCallSend(senderPsid, choiceResponse)
         .then(() => asyncCallSend(senderPsid, newResponse))
+        .then(() => { if (cb) cb(senderPsid); })
         .catch(error => console.log(error));
     });
   } else {
