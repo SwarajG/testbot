@@ -11,9 +11,7 @@ const helper = require('../utils/helper');
 const itemList = require('../utils/itemList');
 const enums = require('../utils/enum');
 const asyncCallSend = require('./AsyncCallSendApi');
-const showCurrentOrderCart = require('./index');
-
-console.log('showCurrentOrderCart: ', showCurrentOrderCart);
+const showCurrentOrderCart = require('./ShowCurrentOrderCart');
 
 const addItemQuickReplies = itemId => (
   [...Array(5).keys()].map(value => ({
