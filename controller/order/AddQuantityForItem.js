@@ -6,11 +6,11 @@ const addQuantityForItem = (userId, itemId, quantity, cb) => {
     if (err) {
       console.log('Error gettting the users...');
     }
-    const order = _.clonedDeep(orderList[0]);
+    const order = _.clonedeep(orderList[0]);
     const orderObjectId = order._id;
     const newOrderList = order.itemList.map((item) => {
       if (item.itemId === item) {
-        const clonedItem = _.clonedDeep(item);
+        const clonedItem = _.clonedeep(item);
         clonedItem.quantity = quantity;
       }
       return item;
