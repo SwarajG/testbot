@@ -55,7 +55,6 @@ const getResponseTextForUser = (senderPsid, payload) => {
 };
 
 const getResponseForReply = (payload, senderPsid) => {
-  console.log(payload);
   const splitPayload = payload.split('_');
   const allItems = [];
   Object.values(itemList).forEach(itemInfoList => allItems.push(itemInfoList));
@@ -80,11 +79,7 @@ const getResponseForReply = (payload, senderPsid) => {
       const choiceResponse = {
         text: responseTextForUser,
       };
-      console.log('choiceResponse: ', choiceResponse);
       const newResponse = prepareNextAction(senderPsid, action, itemName, itemId);
-      console.log(newResponse);
-      // const callBack = callSendAPI(senderPsid, newResponse);
-      // callSendAPI(senderPsid, choiceResponse, cb);
       asyncCallSend(senderPsid, choiceResponse)
         .then(() => asyncCallSend(senderPsid, newResponse))
         .catch(error => console.log(error));
