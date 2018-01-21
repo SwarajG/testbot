@@ -10,7 +10,6 @@ const Order = require('../model/order');
 const showCurrentOrderCart = (userId) => {
   Order.getOpenOrderByUserId(userId, (err, orderList) => {
     const order = orderList[0];
-    console.log(order);
     const response = {
       attachment: {
         type: 'template',
@@ -50,7 +49,7 @@ const showCurrentOrderCart = (userId) => {
         },
       },
     };
-    console.log(response);
+    console.log(response, JSON.stringify(response.elements));
     callSendAPI(userId, response);
   });
 };
