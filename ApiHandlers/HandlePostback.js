@@ -6,6 +6,7 @@ const SHOW_BIRYANI_REPONSE = require('./Response/Biryani');
 const SHOW_ROLLES_RESPONSE = require('./Response/Rolls');
 const SHOW_DESSERT_RESPONSE = require('./Response/Desserts');
 const SHOW_BEVERAGE_REPOSEN = require('./Response/Beverages');
+const PLACE_ORDER = require('./Response/PlaceOrder');
 const orderController = require('../controller/order');
 const helper = require('../utils/helper');
 const itemList = require('../utils/itemList');
@@ -106,6 +107,8 @@ const getResponseForReply = (payload, senderPsid) => {
         return SHOW_DESSERT_RESPONSE;
       case 'show-beverages':
         return SHOW_BEVERAGE_REPOSEN;
+      case 'place-order':
+        return PLACE_ORDER;
       default:
         return {
           text: 'Sorry, not able to catch your response, please try from the given options',
