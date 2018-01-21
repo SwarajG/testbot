@@ -7,7 +7,7 @@ const updateOrder = (userId, item, cb) => {
     } else {
       const order = orderList[0];
       const orderObjectId = order._id;
-      const itemId = item.itemList;
+      const { itemId } = item;
       const isItemExists = order.itemList.find(tempItem => tempItem.itemId === itemId);
       if (!isItemExists) {
         order.itemList.push(item);

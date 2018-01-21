@@ -11,7 +11,7 @@ const getCallSendPromise = (senderPsid, message) => {
   };
   return fetch(`https://graph.facebook.com/v2.10/me/messages?access_token=${PAGE_ACCESS_TOKEN}`, {
     method: 'POST',
-    body: requestBody,
+    body: JSON.stringify(requestBody),
   });
 };
 
