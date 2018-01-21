@@ -49,7 +49,7 @@ const showCurrentOrderCart = (userId) => {
         },
       },
     };
-    console.log(response, JSON.stringify(response.elements));
+    console.log(response, JSON.stringify(response.attachment.payload.elements));
     callSendAPI(userId, response);
   });
 };
