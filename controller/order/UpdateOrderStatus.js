@@ -11,7 +11,7 @@ const updateOrderStatus = (userId, status, cb) => {
       const updatedOrder = Object.assign(order, { status });
       Order
         .update(orderObjectId, updatedOrder)
-        .then(cb)
+        .then(response => cb(null, response))
         .catch(updateErr => console.log('Error in updating order for user...', updateErr));
     }
   });

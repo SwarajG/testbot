@@ -12,7 +12,7 @@ const pickupLocationForOrder = (userId, pickupLocation, cb) => {
       console.log(pickupLocation, order);
       Order
         .update(orderObjectId, order)
-        .then(cb)
+        .then(response => cb(null, response))
         .catch(updateErr => console.log('Error in updating order for user...', updateErr));
     }
   });
