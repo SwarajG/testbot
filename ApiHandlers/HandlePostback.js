@@ -14,6 +14,7 @@ const enums = require('../utils/enum');
 const asyncCallSend = require('./AsyncCallSendApi');
 const showCurrentOrderCart = require('./ShowCurrentOrderCart');
 const changeQuantityForItem = require('./ChangeQuantityForItem');
+const OUTLETS = require('./Response/Outlet');
 
 const prepareNextAction = (senderPsid, action, itemName, itemId) => {
   let response = {};
@@ -109,6 +110,8 @@ const getResponseForReply = (payload, senderPsid) => {
         return SHOW_BEVERAGE_REPOSEN;
       case 'place-order':
         return PLACE_ORDER;
+      case 'order-pickup':
+        return OUTLETS;
       default:
         return {
           text: 'Sorry, not able to catch your response, please try from the given options',

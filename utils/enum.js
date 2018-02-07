@@ -16,4 +16,5 @@ module.exports = {
   PLACE_ORDER: 'placeOrder',
   ADD_ADDRESS: 'addAddress',
   CHANGE_QUANTITY: 'changeQuantity',
+  PICKUP: 'pickup',
 };

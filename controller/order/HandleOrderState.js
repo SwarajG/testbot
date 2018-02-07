@@ -6,6 +6,7 @@ const addQuantityForItem = require('./AddQuantityForItem');
 const placeOrderForUser = require('./PlaceOrderForUser');
 const addAddressForOrder = require('./AddAddressForOrder');
 const changeQuantityForItem = require('../../ApiHandlers/ChangeQuantityForItem');
+const setPickupLocationForOrder = require('./PickupLocationForOrder');
 
 const handleOrderStatus = (userId, payload, cb) => {
   const argumentsForOrder = payload.split('_');
@@ -37,6 +38,9 @@ const handleOrderStatus = (userId, payload, cb) => {
       break;
     case enums.PLACE_ORDER:
       placeOrderForUser(userId, cb);
+      break;
+    case enums.PICKUP:
+      setPickupLocationForOrder(userId, valueOfItem, cb);
       break;
     default:
       break;
