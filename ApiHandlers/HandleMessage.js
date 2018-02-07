@@ -5,12 +5,12 @@ const continueOrder = require('./Response/ContinueOrder');
 const asyncCallSend = require('../ApiHandlers/AsyncCallSendApi');
 const { getResponseForReply } = require('./HandlePostback');
 const showCurrentOrderCart = require('./ShowCurrentOrderCart');
+const addPhoneNumberForOrder = require('../controller/order/AddPhoneNumberForOrder');
 const enums = require('../utils/enum');
 
 module.exports = {
   handleMessage: (senderPsid, receivedMessage) => {
     let response;
-    console.log(receivedMessage);
     if (receivedMessage.quick_reply) {
       const quickReply = receivedMessage.quick_reply;
       const { payload } = quickReply;
@@ -69,6 +69,23 @@ module.exports = {
             });
           }
         }
+      }
+    } else if (receivedMessage.text) {
+      const userText = receivedMessage.text;
+      const phoneNumber = parseInt(userText, 10);
+      if (phoneNumber.toString().length === 10) {
+        addPhoneNumberForOrder(senderPsid, phoneNumber);
+        const choiceResponse = {
+          text: 'Your order has been placed, for any query please contact +91 9426478112.',
+        };
+        asyncCallSend(senderPsid, choiceResponse)
+          .catch(error => console.log(error));
+      } else {
+        const choiceResponse = {
+          text: 'Please enter valid value',
+        };
+        asyncCallSend(senderPsid, choiceResponse)
+          .catch(error => console.log(error));
       }
     }
     callSendAPI(senderPsid, response);

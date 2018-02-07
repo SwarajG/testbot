@@ -77,21 +77,29 @@ const getResponseForReply = (payload, senderPsid) => {
         console.log('Sorry, not able to update to cart...', err);
       }
       console.log('Successfully updated to the cart...');
-      const {
-        messageText,
-        action,
-        itemName,
-        itemId,
-      } = getResponseTextForUser(senderPsid, payload);
-      const responseTextForUser = messageText;
-      const choiceResponse = {
-        text: responseTextForUser,
-      };
-      const { response: newResponse, cb } = prepareNextAction(senderPsid, action, itemName, itemId);
-      asyncCallSend(senderPsid, choiceResponse)
-        .then(() => asyncCallSend(senderPsid, newResponse))
-        .then(() => { if (cb) cb(senderPsid); })
-        .catch(error => console.log(error));
+      if (payload.indexOf(enums.PICKUP) > -1) {
+        const choiceResponse = {
+          text: 'Please enter your phone, without it order will not be considered as a valid order.',
+        };
+        asyncCallSend(senderPsid, choiceResponse)
+          .catch(error => console.log(error));
+      } else {
+        const {
+          messageText,
+          action,
+          itemName,
+          itemId,
+        } = getResponseTextForUser(senderPsid, payload);
+        const responseTextForUser = messageText;
+        const choiceResponse = {
+          text: responseTextForUser,
+        };
+        const { response: newResponse, cb } = prepareNextAction(senderPsid, action, itemName, itemId);
+        asyncCallSend(senderPsid, choiceResponse)
+          .then(() => asyncCallSend(senderPsid, newResponse))
+          .then(() => { if (cb) cb(senderPsid); })
+          .catch(error => console.log(error));
+      }
     });
   } else {
     switch (payload) {
