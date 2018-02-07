@@ -13,6 +13,7 @@ const orderSchema = mongoose.Schema({
   itemList: Array,
   userId: String,
   deliverMethod: Mixed,
+  phone: String,
 });
 
 const Order = mongoose.model('Order', orderSchema);
