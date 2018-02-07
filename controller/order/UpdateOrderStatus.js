@@ -1,10 +1,12 @@
 const Order = require('../../model/order');
+const _ = require('lodash');
 
 const updateOrderStatus = (userId, status, cb) => {
-  Order.getOpenOrderByUserId(userId, (err, order) => {
+  Order.getOpenOrderByUserId(userId, (err, orderList) => {
     if (err) {
       console.log('Error in getting order...');
     } else {
+      const order = _.cloneDeep(orderList[0]);
       const orderObjectId = order._id;
       const updatedOrder = Object.assign(order, { status });
       Order

@@ -1,11 +1,12 @@
 const Order = require('../../model/order');
+const _ = require('lodash');
 
 const addPhoneNumberForOrder = (userId, phone, cb) => {
   Order.getOpenOrderByUserId(userId, (err, orderList) => {
     if (err) {
       console.log('Error in getting a order for user...');
     } else if (orderList.length) {
-      const order = orderList[0];
+      const order = _.cloneDeep(orderList[0]);
       const orderObjectId = order._id;
       order.phone = phone;
       Order
