@@ -70,7 +70,7 @@ module.exports = {
           }
         }
       }
-    } else if (receivedMessage.text) {
+    } else if (receivedMessage.text && receivedMessage.text.length === 10) {
       const userText = receivedMessage.text;
       const phoneNumber = parseInt(userText, 10);
       if (phoneNumber.toString().length === 10) {
@@ -78,14 +78,12 @@ module.exports = {
         const choiceResponse = {
           text: 'Your order has been placed, for any query please contact +91 9426478112.',
         };
-        asyncCallSend(senderPsid, choiceResponse)
-          .catch(error => console.log(error));
+        callSendAPI(senderPsid, choiceResponse);
       } else {
         const choiceResponse = {
           text: 'Please enter valid value',
         };
-        asyncCallSend(senderPsid, choiceResponse)
-          .catch(error => console.log(error));
+        callSendAPI(senderPsid, choiceResponse);
       }
     }
     callSendAPI(senderPsid, response);

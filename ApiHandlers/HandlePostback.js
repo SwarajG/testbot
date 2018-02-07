@@ -80,8 +80,7 @@ const getResponseForReply = (payload, senderPsid) => {
         const choiceResponse = {
           text: 'Please enter your phone, without it order will not be considered as a valid order.',
         };
-        asyncCallSend(senderPsid, choiceResponse)
-          .catch(error => console.log(error));
+        callSendAPI(senderPsid, choiceResponse);
       } else {
         const {
           messageText,
