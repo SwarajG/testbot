@@ -28,7 +28,6 @@ module.exports = {
             callSendAPI(senderPsid, newResponse);
           }
         } else if (payload === 'order-pickup') {
-          console.log('order-pickup from message');
           const newResponse = getResponseForReply(payload, senderPsid);
           if (newResponse) {
             callSendAPI(senderPsid, newResponse);

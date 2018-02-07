@@ -9,6 +9,7 @@ const pickupLocationForOrder = (userId, pickupLocation, cb) => {
       const order = _.cloneDeep(orderList[0]);
       const orderObjectId = order._id;
       order.pickupLocation = pickupLocation;
+      console.log(pickupLocation, order);
       Order
         .update(orderObjectId, order)
         .then(cb)
