@@ -10,6 +10,7 @@ const enums = require('../utils/enum');
 module.exports = {
   handleMessage: (senderPsid, receivedMessage) => {
     let response;
+    console.log(receivedMessage);
     if (receivedMessage.quick_reply) {
       const quickReply = receivedMessage.quick_reply;
       const { payload } = quickReply;
@@ -27,6 +28,7 @@ module.exports = {
             callSendAPI(senderPsid, newResponse);
           }
         } else if (payload === 'order-pickup') {
+          console.log('order-pickup from message');
           const newResponse = getResponseForReply(payload, senderPsid);
           if (newResponse) {
             callSendAPI(senderPsid, newResponse);
