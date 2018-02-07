@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const utils = require('../utils');
 const enums = require('../utils/enum');
 
+const { Mixed } = mongoose.Schema.Types;
+
 const orderSchema = mongoose.Schema({
   orderId: String,
   time: Date,
@@ -10,6 +12,7 @@ const orderSchema = mongoose.Schema({
   status: String,
   itemList: Array,
   userId: String,
+  deliverMethod: Mixed,
 });
 
 const Order = mongoose.model('Order', orderSchema);
