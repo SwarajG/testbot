@@ -7,6 +7,7 @@ const {
   combos,
   beverages,
   desserts,
+  outlets,
 } = itemList;
 
 module.exports = {
@@ -16,4 +17,5 @@ module.exports = {
   rolls,
   desserts,
   beverages,
+  outlets,
 };
