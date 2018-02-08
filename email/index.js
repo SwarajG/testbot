@@ -34,7 +34,7 @@ const mailOptions = order => ({
   text: emailText(order),
 });
 
-module.export = (order) => {
+module.exports = (order) => {
   transporter.sendMail(mailOptions(order), (error, info) => {
     if (error) {
       console.log(error);
