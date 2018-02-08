@@ -15,6 +15,7 @@ const asyncCallSend = require('./AsyncCallSendApi');
 const showCurrentOrderCart = require('./ShowCurrentOrderCart');
 const changeQuantityForItem = require('./ChangeQuantityForItem');
 const OUTLETS = require('./Response/Outlet');
+const setMethodAsDeliver = require('../controller/order/DeliverMethodForOrder');
 
 const prepareNextAction = (senderPsid, action, itemName, itemId) => {
   let response = {};
@@ -120,6 +121,10 @@ const getResponseForReply = (payload, senderPsid) => {
       case 'order-pickup':
         return OUTLETS;
       case 'order-delivery':
+        setMethodAsDeliver(senderPsid, (err) => {
+          if (err) console.log(err);
+          console.log('Successfulyy added method as delivery to home.');
+        });
         return {
           text: 'Please enter your phone number, without it order will not be considered as a valid order. We will confirm your address on this phone number',
         };

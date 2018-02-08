@@ -17,4 +17,5 @@ module.exports = {
   ADD_ADDRESS: 'addAddress',
   CHANGE_QUANTITY: 'changeQuantity',
   PICKUP: 'pickup',
+  DELIVER: 'deliver',
 };
