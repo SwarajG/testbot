@@ -25,12 +25,7 @@ module.exports = {
           }
         } else if (payload === 'show-cart') {
           showCurrentOrderCart(senderPsid);
-        } else if (payload === 'place-order') {
-          const newResponse = getResponseForReply(payload, senderPsid);
-          if (newResponse) {
-            callSendAPI(senderPsid, newResponse);
-          }
-        } else if (payload === 'order-pickup') {
+        } else if (payload === 'place-order' || payload === 'order-pickup' || payload === 'order-delivery') {
           const newResponse = getResponseForReply(payload, senderPsid);
           if (newResponse) {
             callSendAPI(senderPsid, newResponse);
