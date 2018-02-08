@@ -79,7 +79,7 @@ module.exports = {
               text: 'Your order has been placed, We will contact you and confirm your address and order. For any further query please contact +91 9427859512.',
             };
             callSendAPI(senderPsid, choiceResponse);
-            Order.getOpenOrderByUserId(senderPsid, (getOrderErr, orderList) => {
+            Order.getOrderedOrderByUserId(senderPsid, (getOrderErr, orderList) => {
               if (err) {
                 console.log('Error in getting the order...', getOrderErr);
               } else {

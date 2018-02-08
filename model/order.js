@@ -62,4 +62,12 @@ module.exports = {
       })
       .exec(cb);
   },
+  getOrderedOrderByUserId: (userId, cb) => {
+    Order
+      .find({
+        userId,
+        status: enums.ORDER_STATUS.ORDERD,
+      })
+      .exec(cb);
+  },
 };
