@@ -119,6 +119,10 @@ const getResponseForReply = (payload, senderPsid) => {
         return PLACE_ORDER;
       case 'order-pickup':
         return OUTLETS;
+      case 'order-delivery':
+        return {
+          text: 'Please enter your phone number, without it order will not be considered as a valid order. We will confirm your address on this phone number',
+        };
       default:
         return {
           text: 'Sorry, not able to catch your response, please try from the given options',
