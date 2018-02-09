@@ -11,7 +11,7 @@ const itemHtmlForItem = item => `
 
 const getLocationIfNeeded = (deliverMethod) => {
   if (deliverMethod.method && deliverMethod.method === enums.PICKUP) {
-    return `<p><b>Delivery Pickup Location:</b> ${deliverMethod.location}</p>`;
+    return `<p style="text-align: center"><b>Delivery Pickup Location:</b> ${deliverMethod.location}</p>`;
   }
   return '';
 };
@@ -40,17 +40,17 @@ const emailHtml = (order) => {
     </head>
     <body>
       <img src="https://s3-ap-southeast-1.amazonaws.com/upandup-resources/order.jpg" style="max-width: 100%" />
-      <h1>Order</h1>
-      <h2>Status: ${status}</h2>
+      <h1 style="text-align: center">Order</h1>
+      <h2 style="text-align: center">Status: ${status}</h2>
       ${itemList.map(item => itemHtmlForItem(item))}
-      <p><b>Phone Number:</b> ${phone}</p>
+      <p style="text-align: center"><b>Phone Number:</b> ${phone}</p>
       <div>
-        <p><b>Delivery Method:</b> ${deliverMethod.method}</p>
+        <p style="text-align: center"><b>Delivery Method:</b> ${deliverMethod.method}</p>
         ${getLocationIfNeeded(deliverMethod)}
-        <p><b>Phone Number:</b> ${phone}</p>
+        <p style="text-align: center"><b>Phone Number:</b> ${phone}</p>
       </div>
-      <p><b>Order Id:</b> ${orderId}</p>
-      <p><b>fbUser Id:</b> ${userId}</p>
+      <p style="text-align: center"><b>Order Id:</b> ${orderId}</p>
+      <p style="text-align: center"><b>fbUser Id:</b> ${userId}</p>
     </body>
     </html>
   `;
