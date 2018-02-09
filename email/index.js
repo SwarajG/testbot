@@ -1,5 +1,10 @@
-const nodemailer = require('nodemailer');
+const ses = require('node-ses');
 const enums = require('../utils/enum');
+
+const client = ses.createClient({
+  key: process.env.AWS_ACCESS_KEY,
+  secret: process.env.SECREAT_KEY,
+});
 
 const itemHtmlForItem = item => `
   <div style="display: inline-block; margin:10px 0 0 10px; flex-grow: 1; width: calc(100% * (1/4) - 10px - 1px);">
@@ -28,7 +33,7 @@ const emailHtml = (order) => {
   const totalPrice = itemList
     .reduce((accumulator, currentItem) =>
       accumulator + (currentItem.price * currentItem.quantity), 0);
-  const priceAfterGST = (5 * totalPrice) / 100;
+  const priceAfterGST = totalPrice - ((5 * totalPrice) / 100);
   const htmlForEmail = `
     <!DOCTYPE html>
     <html>
@@ -64,29 +69,14 @@ const emailHtml = (order) => {
   return htmlForEmail;
 };
 
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.myEmail,
-    pass: process.env.myPassword,
-  },
-});
-
-const mailOptions = order => ({
-  from: process.env.myEmail,
-  to: 'gandhiswaraj94@gmail.com',
-  subject: 'Order for up & up',
-  html: emailHtml(order),
-});
-
 module.exports = (order) => {
-  transporter.sendMail(mailOptions(order), (error, info) => {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log(`Email sent: ${info.response}`);
-    }
+  client.sendEmail({
+    to: 'gandhiswaraj94@gmail.com',
+    from: 'gandhiswaraj94@gmail.com',
+    subject: 'Order for up & up',
+    message: emailHtml(order),
+    altText: 'Order Details',
+  }, (err, data, res) => {
+    console.log(err, data, res);
   });
 };
