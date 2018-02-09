@@ -25,6 +25,10 @@ const emailHtml = (order) => {
     deliverMethod,
     itemList,
   } = order;
+  const totalPrice = itemList
+    .reduce((accumulator, currentItem) =>
+      accumulator + (currentItem.price * currentItem.quantity), 0);
+  const priceAfterGST = (5 * totalPrice) / 100;
   const htmlForEmail = `
     <!DOCTYPE html>
     <html>
@@ -42,13 +46,16 @@ const emailHtml = (order) => {
       <img src="https://s3-ap-southeast-1.amazonaws.com/upandup-resources/order.jpg" style="max-width: 100%" />
       <h1 style="text-align: center">Order</h1>
       <h2 style="text-align: center">Status: ${status}</h2>
-      ${itemList.map(item => itemHtmlForItem(item))}
+      <div style="display: flex; flex-wrap:wrap;">
+        ${itemList.map(item => itemHtmlForItem(item))}
+      </div>
       <p style="text-align: center"><b>Phone Number:</b> ${phone}</p>
       <div>
         <p style="text-align: center"><b>Delivery Method:</b> ${deliverMethod.method}</p>
         ${getLocationIfNeeded(deliverMethod)}
         <p style="text-align: center"><b>Phone Number:</b> ${phone}</p>
       </div>
+      <p style="text-align: center;"><b>Total with GST(5%):</b> ${priceAfterGST}</p>
       <p style="text-align: center"><b>Order Id:</b> ${orderId}</p>
       <p style="text-align: center"><b>fbUser Id:</b> ${userId}</p>
     </body>
@@ -67,7 +74,7 @@ const transporter = nodemailer.createTransport({
 
 const mailOptions = order => ({
   from: process.env.myEmail,
-  to: 'Swapnil@yuppfoods.com',
+  to: 'gandhiswaraj94@gmail.com',
   subject: 'Order for up & up',
   html: emailHtml(order),
 });
