@@ -1,9 +1,22 @@
 const nodemailer = require('nodemailer');
 const enums = require('../utils/enum');
 
-const itemTextForItem = item => `${item.name} with price: ${item.price} with quantity: ${item.quantity}\n`;
+const itemHtmlForItem = item => `
+  <div style="display: inline-block; margin:10px 0 0 10px; flex-grow: 1; width: calc(100% * (1/4) - 10px - 1px);">
+    <p><b>Item Name:</b> ${item.name}</p>
+    <p><b>Item Price:</b> ${item.price}</p>
+    <p><b>Item quantity:</b> ${item.quantity}</p>
+  </div>
+`;
 
-const emailText = (order) => {
+const getLocationIfNeeded = (deliverMethod) => {
+  if (deliverMethod.method && deliverMethod.method === enums.PICKUP) {
+    return `<p><b>Delivery Pickup Location:</b> ${deliverMethod.location}</p>`;
+  }
+  return '';
+};
+
+const emailHtml = (order) => {
   const {
     orderId,
     userId,
@@ -12,11 +25,36 @@ const emailText = (order) => {
     deliverMethod,
     itemList,
   } = order;
-  return `Order with ${orderId} and fbUserId ${userId} has placed order with status${status}. List of items in the order with the quantity is down below. \n
-          ${itemList.map(item => itemTextForItem(item))}
-          Phone number for this order is ${phone}
-          User has choose ${deliverMethod.method}${deliverMethod.method === enums.PICKUP ? ` on location ${deliverMethod.location}` : '.'}
-          `;
+  const htmlForEmail = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width">
+      <title>JS Bin</title>
+      <style>
+        body {
+          text-align: center;
+        }
+      </style>
+    </head>
+    <body>
+      <img src="https://s3-ap-southeast-1.amazonaws.com/upandup-resources/order.jpg" style="max-width: 100%" />
+      <h1>Order</h1>
+      <h2>Status: ${status}</h2>
+      ${itemList.map(item => itemHtmlForItem(item))}
+      <p><b>Phone Number:</b> ${phone}</p>
+      <div>
+        <p><b>Delivery Method:</b> ${deliverMethod.method}</p>
+        ${getLocationIfNeeded(deliverMethod)}
+        <p><b>Phone Number:</b> ${phone}</p>
+      </div>
+      <p><b>Order Id:</b> ${orderId}</p>
+      <p><b>fbUser Id:</b> ${userId}</p>
+    </body>
+    </html>
+  `;
+  return htmlForEmail;
 };
 
 const transporter = nodemailer.createTransport({
@@ -31,7 +69,7 @@ const mailOptions = order => ({
   from: process.env.myEmail,
   to: 'gandhiswaraj9067008148@gmail.com',
   subject: 'Order for up & up',
-  text: emailText(order),
+  html: emailHtml(order),
 });
 
 module.exports = (order) => {
