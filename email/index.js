@@ -67,7 +67,7 @@ const transporter = nodemailer.createTransport({
 
 const mailOptions = order => ({
   from: process.env.myEmail,
-  to: 'gandhiswaraj9067008148@gmail.com',
+  to: 'Swapnil@yuppfoods.com',
   subject: 'Order for up & up',
   html: emailHtml(order),
 });
