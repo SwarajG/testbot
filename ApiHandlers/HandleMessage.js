@@ -7,7 +7,7 @@ const { getResponseForReply } = require('./HandlePostback');
 const showCurrentOrderCart = require('./ShowCurrentOrderCart');
 const addPhoneNumberForOrder = require('../controller/order/AddPhoneNumberForOrder');
 const updateOrderStatus = require('../controller/order/UpdateOrderStatus');
-const sendEmailToaAdmin = require('../email');
+const sendEmailToaAdmin = require('../email/newIndex');
 const Order = require('../model/order');
 const enums = require('../utils/enum');
 
