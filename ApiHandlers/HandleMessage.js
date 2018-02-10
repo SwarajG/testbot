@@ -80,7 +80,12 @@ module.exports = {
     } else if (receivedMessage.text) {
       const userText = receivedMessage.text;
       const phoneNumber = parseInt(userText, 10);
-      if (phoneNumber.toString().length === 10) {
+      if (userText.toLowerCase().trim() === 'menu') {
+        const newResponse = getResponseForReply('getstarted', senderPsid);
+        if (newResponse) {
+          callSendAPI(senderPsid, newResponse);
+        }
+      } else if (phoneNumber.toString().length === 10) {
         addPhoneNumberForOrder(senderPsid, phoneNumber.toString(), (err, phoneResponse) => {
           updateOrderStatus(senderPsid, enums.ORDER_STATUS.ORDERD, (error, statusUpdateResponse) => {
             if (error) console.log(error);
@@ -88,7 +93,12 @@ module.exports = {
             const choiceResponse = {
               text: 'Your order has been placed, We will contact you and confirm your address and order. For any further query please contact +91 9427859512.',
             };
-            callSendAPI(senderPsid, choiceResponse);
+            const forNextOrder = {
+              text: 'Please just type in "menu" for the next order to start.',
+            };
+            asyncCallSend(senderPsid, choiceResponse)
+              .then(() => asyncCallSend(senderPsid, forNextOrder))
+              .catch(errorResponse => console.log(errorResponse));
             Order.getOrderedOrderByUserId(senderPsid, (getOrderErr, orderList) => {
               if (err) {
                 console.log('Error in getting the order...', getOrderErr);
