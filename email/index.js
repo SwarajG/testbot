@@ -73,7 +73,7 @@ module.exports = (order) => {
   client.sendEmail({
     to: 'gandhiswaraj94@gmail.com',
     from: 'gandhiswaraj94@gmail.com',
-    subject: 'Order for up & up',
+    subject: 'Order for Up & Up',
     message: emailHtml(order),
     altText: 'Order Details',
   }, (err, data, res) => {
