@@ -60,9 +60,19 @@ module.exports = {
               const choiceResponse = {
                 text: `Quantity of ${itemName} has been updated to ${quantity}`,
               };
-              asyncCallSend(senderPsid, choiceResponse)
-                .then(() => asyncCallSend(senderPsid, continueOrder))
-                .catch(error => console.log(error));
+              if (itemName.toLowerCase().indexOf('serve') > -1) {
+                const comboOptionResponse = {
+                  text: 'You will be able to pick from the options, while confirming order on the phone at the end of the order.',
+                };
+                asyncCallSend(senderPsid, choiceResponse)
+                  .then(() => asyncCallSend(senderPsid, comboOptionResponse))
+                  .then(() => asyncCallSend(senderPsid, continueOrder))
+                  .catch(error => console.log(error));
+              } else {
+                asyncCallSend(senderPsid, choiceResponse)
+                  .then(() => asyncCallSend(senderPsid, continueOrder))
+                  .catch(error => console.log(error));
+              }
             });
           }
         }
