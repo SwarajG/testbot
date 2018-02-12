@@ -82,6 +82,16 @@ const getResponseForReply = (payload, senderPsid) => {
           text: 'Please enter your phone, without it order will not be considered as a valid order.',
         };
         callSendAPI(senderPsid, choiceResponse);
+      } else if (payload.indexOf(enums.ORDER_STATUS.CANCELED) > -1) {
+        const cancelResponse = {
+          text: 'Your order has been canceled.',
+        };
+        const forNextOrder = {
+          text: 'Please just type in "menu" for the next order to start.',
+        };
+        asyncCallSend(senderPsid, cancelResponse)
+          .then(() => asyncCallSend(senderPsid, forNextOrder))
+          .catch(errFromCancel => console.log(errFromCancel));
       } else {
         const {
           messageText,
@@ -141,7 +151,16 @@ module.exports = {
     const { payload } = receivedPostback;
     const response = getResponseForReply(payload, senderPsid);
     if (response) {
-      callSendAPI(senderPsid, response);
+      if (payload === 'getstarted') {
+        const cancelWarning = {
+          text: 'You can cancel your order during the ordering process, after ordering if you want to cancel the order you can call us on +91 9427859512',
+        };
+        asyncCallSend(senderPsid, cancelWarning)
+          .then(() => asyncCallSend(senderPsid, response))
+          .catch(err => console.log(err));
+      } else {
+        callSendAPI(senderPsid, response);
+      }
     }
   },
   getResponseForReply,

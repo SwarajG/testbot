@@ -89,54 +89,60 @@ module.exports = {
   }],
   biryani: [{
     name: 'Up & Up Veg Dum Biryani',
-    value: 'veg-dum-biryani-regular',
+    value: 'veg-dum-biryani',
     image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
-    price: 150,
+    price: {
+      regular: 150,
+      jumbo: 250,
+    },
   }, {
-    name: 'Up & Up Veg Dum Biryani',
-    value: 'veg-dum-biryani-jumbo',
+    name: 'Masala Rajma Rice',
+    value: 'masala-rajma-rice',
     image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
-    price: 250,
+    price: {
+      regular: 130,
+      jumbo: 210,
+    },
+  }, {
+    name: 'Special Chole Rice',
+    value: 'chole-rice',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
+    price: {
+      regular: 130,
+      jumbo: 210,
+    },
   }, {
     name: 'Mutton Dum Biryani',
-    price: 180,
-    value: 'dum-biryani-regular',
+    value: 'dum-biryani',
     image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
-  }, {
-    name: 'Mutton Dum Biryani',
-    price: 330,
-    value: 'dum-biryani-regular-jumbo',
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
+    price: {
+      regular: 180,
+      jumbo: 330,
+    },
   }, {
     name: 'Up & UP Chicken Kebab Biryani',
-    value: 'kebab-dum-biryani-regular',
-    price: 180,
+    value: 'kebab-dum-biryani',
     image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
-  }, {
-    name: 'Up & UP Chicken Kebab Biryani',
-    value: 'kebab-dum-biryani-jumbo',
-    price: 330,
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
+    price: {
+      regular: 180,
+      jumbo: 330,
+    },
   }, {
     name: 'Chicken Dum Biryan',
-    value: 'chicken-dum-biryani-regular',
-    price: 150,
+    value: 'chicken-dum-biryani',
     image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
-  }, {
-    name: 'Chicken Dum Biryan',
-    value: 'chicken-dum-biryani-jumbo',
-    price: 250,
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
+    price: {
+      regular: 150,
+      jumbo: 250,
+    },
   }, {
     name: 'Egg Dum Biryani',
-    value: 'egg-dum-biryani-regular',
-    price: 130,
+    value: 'egg-dum-biryani',
     image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
-  }, {
-    name: 'Egg Dum Biryani',
-    value: 'egg-dum-biryani-jumbo',
-    price: 210,
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
+    price: {
+      regular: 130,
+      jumbo: 210,
+    },
   }],
   beverages: [{
     name: 'Coke [300 Ml]',

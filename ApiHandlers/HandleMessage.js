@@ -11,6 +11,10 @@ const sendEmailToaAdmin = require('../email');
 const Order = require('../model/order');
 const enums = require('../utils/enum');
 
+const forNextOrder = {
+  text: 'Please just type in "menu" for the next order to start.',
+};
+
 module.exports = {
   handleMessage: (senderPsid, receivedMessage) => {
     let response;
@@ -85,6 +89,9 @@ module.exports = {
         if (newResponse) {
           callSendAPI(senderPsid, newResponse);
         }
+      } else if (userText.toLowerCase().trim() === 'cancel') {
+        const cancelOrder = `${enums.ORDER_STATUS.CANCELED}_order`;
+        getResponseForReply(cancelOrder, senderPsid);
       } else if (phoneNumber.toString().length === 10) {
         addPhoneNumberForOrder(senderPsid, phoneNumber.toString(), (err, phoneResponse) => {
           updateOrderStatus(senderPsid, enums.ORDER_STATUS.ORDERD, (error, statusUpdateResponse) => {
@@ -92,9 +99,6 @@ module.exports = {
             console.log('Successfully updated the status for the order...', statusUpdateResponse);
             const choiceResponse = {
               text: 'Your order has been placed, We will contact you and confirm your address and order. For any further query please contact +91 9427859512.',
-            };
-            const forNextOrder = {
-              text: 'Please just type in "menu" for the next order to start.',
             };
             asyncCallSend(senderPsid, choiceResponse)
               .then(() => asyncCallSend(senderPsid, forNextOrder))
