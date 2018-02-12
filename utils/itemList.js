@@ -222,50 +222,66 @@ module.exports = {
   sizedBiryani: [{
     name: 'Up & Up Veg Dum Biryani (Regular)',
     value: 'veg-dum-biryani-regular',
+    price: 150,
   }, {
     name: 'Up & Up Veg Dum Biryani (Jumbo)',
     value: 'veg-dum-biryani-jumbo',
+    price: 250,
   }, {
     name: 'Masala Rajma Rice (Regular)',
     value: 'masala-rajma-rice-regular',
+    price: 130,
   }, {
     name: 'Masala Rajma Rice (Jumbo)',
     value: 'masala-rajma-rice-jumbo',
+    price: 210,
   }, {
     name: 'Special Chole Rice (Regular)',
     value: 'special-chole-rice-regular',
+    price: 130,
   }, {
     name: 'Special Chole Rice (Jumbo)',
     value: 'special-chole-rice-jumbo',
+    price: 210,
   }, {
     name: 'Mutton Dum Biryani (Regular)',
     value: 'mutton-dum-biryani-regular',
+    price: 180,
   }, {
     name: 'Mutton Dum Biryani (Jumbo)',
     value: 'mutton-dum-biryani-jumbo',
+    price: 330,
   }, {
     name: 'Up & UP Chicken Kebab Biryani (Regular)',
     value: 'kebab-dum-biryani-regular',
+    price: 180,
   }, {
     name: 'Up & UP Chicken Kebab Biryani (Jumbo)',
     value: 'kebab-dum-biryani-jumbo',
+    price: 330,
   }, {
     name: 'Chicken Dum Biryani (Regular)',
     value: 'chicken-dum-biryani-regular',
+    price: 150,
   }, {
     name: 'Chicken Dum Biryani (Jumbo)',
     value: 'chicken-dum-biryani-jumbo',
+    price: 250,
   }, {
     name: 'Egg Dum Biryani (Regular)',
     value: 'egg-dum-biryani-regular',
+    price: 130,
   }, {
     name: 'Egg Dum Biryani (Jumbo)',
     value: 'egg-dum-biryani-jumbo',
+    price: 210,
   }, {
     name: 'Chicken Khima Biryani (Regular)',
     value: 'chicken-khima-biryani-regular',
+    price: 189,
   }, {
     name: 'Chicken Khima Biryani (Jumbo)',
     value: 'chicken-khima-biryani-jumbo',
+    price: 339,
   }],
 };
