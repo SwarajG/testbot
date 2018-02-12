@@ -7,7 +7,7 @@ const client = ses.createClient({
 });
 
 const itemHtmlForItem = item => `
-  <div style="display: inline-block; margin:10px 0 0 10px; flex-grow: 1; width: calc(100% * (1/4) - 10px - 1px);">
+  <div style="display: inline-block; margin:10px 0 0 10px; flex-grow: 1;">
     <p><b>Item Name:</b> ${item.name}</p>
     <p><b>Item Price:</b> ${item.price}</p>
     <p><b>Item quantity:</b> ${item.quantity}</p>
@@ -76,7 +76,7 @@ module.exports = (order) => {
     subject: 'Order for Up & Up',
     message: emailHtml(order),
     altText: 'Order Details',
-  }, (err, data, res) => {
-    console.log(err, data, res);
+  }, (err) => {
+    console.log(err);
   });
 };

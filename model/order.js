@@ -14,6 +14,7 @@ const orderSchema = mongoose.Schema({
   userId: String,
   deliverMethod: Mixed,
   phone: String,
+  orderDate: { type: Date, default: Date.now },
 });
 
 const Order = mongoose.model('Order', orderSchema);
