@@ -52,7 +52,7 @@ const emailHtml = (order) => {
       <h1 style="text-align: center">Order</h1>
       <h2 style="text-align: center">Status: ${status}</h2>
       <div style="display: flex; flex-wrap:wrap;">
-        ${itemList.map(item => itemHtmlForItem(item))}
+        ${itemList.map(item => itemHtmlForItem(item)).join('')}
       </div>
       <p style="text-align: center"><b>Phone Number:</b> ${phone}</p>
       <div>

@@ -70,6 +70,7 @@ module.exports = {
         userId,
         status: enums.ORDER_STATUS.ORDERD,
       })
+      .sort({ orderDate: -1 })
       .exec(cb);
   },
 };
