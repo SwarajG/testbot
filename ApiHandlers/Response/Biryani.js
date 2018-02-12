@@ -10,11 +10,11 @@ const createElements = priceList.biryani.map((biryani) => {
   } = biryani;
   const buttons = [{
     type: 'postback',
-    payload: `${enums.ADD_ITEM}-regular_${value}`,
+    payload: `${enums.ADD_ITEM}_${value}-regular`,
     title: 'Add to cart (Regular)',
   }, {
     type: 'postback',
-    payload: `${enums.ADD_ITEM}-jumbo_${value}`,
+    payload: `${enums.ADD_ITEM}_${value}-jumbo`,
     title: 'Add to cart (Jumbo)',
   }, {
     type: 'postback',
