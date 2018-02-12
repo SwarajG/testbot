@@ -24,6 +24,7 @@ const addItemToCart = (userId, itemIdentifier, cb) => {
     price: newPrice,
     quantity,
   };
+  console.log(item);
   Order.getOpenOrderByUserId(userId, (err, response) => {
     if (err) {
       console.log('Error gettting the users...');

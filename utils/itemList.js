@@ -105,7 +105,7 @@ module.exports = {
     },
   }, {
     name: 'Special Chole Rice',
-    value: 'chole-rice',
+    value: 'special-chole-rice',
     image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
     price: {
       regular: 130,
@@ -113,7 +113,7 @@ module.exports = {
     },
   }, {
     name: 'Mutton Dum Biryani',
-    value: 'dum-biryani',
+    value: 'mutton-dum-biryani',
     image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
     price: {
       regular: 180,
@@ -128,7 +128,7 @@ module.exports = {
       jumbo: 330,
     },
   }, {
-    name: 'Chicken Dum Biryan',
+    name: 'Chicken Dum Biryani',
     value: 'chicken-dum-biryani',
     image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
     price: {
@@ -142,6 +142,14 @@ module.exports = {
     price: {
       regular: 130,
       jumbo: 210,
+    },
+  }, {
+    name: 'Chicken Khima Biryani',
+    value: 'chicken-khima-biryani',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
+    price: {
+      regular: 189,
+      jumbo: 339,
     },
   }],
   beverages: [{
@@ -210,5 +218,54 @@ module.exports = {
     image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/resturant2.jpeg',
     address: 'ground floor, shri krishna center, mithakali six roads, navrangpura, mithakhali',
     value: 'navrangpura',
+  }],
+  sizedBiryani: [{
+    name: 'Up & Up Veg Dum Biryani (Regular)',
+    value: 'veg-dum-biryani-regular',
+  }, {
+    name: 'Up & Up Veg Dum Biryani (Jumbo)',
+    value: 'veg-dum-biryani-jumbo',
+  }, {
+    name: 'Masala Rajma Rice (Regular)',
+    value: 'masala-rajma-rice-regular',
+  }, {
+    name: 'Masala Rajma Rice (Jumbo)',
+    value: 'masala-rajma-rice-jumbo',
+  }, {
+    name: 'Special Chole Rice (Regular)',
+    value: 'special-chole-rice-regular',
+  }, {
+    name: 'Special Chole Rice (Jumbo)',
+    value: 'special-chole-rice-jumbo',
+  }, {
+    name: 'Mutton Dum Biryani (Regular)',
+    value: 'mutton-dum-biryani-regular',
+  }, {
+    name: 'Mutton Dum Biryani (Jumbo)',
+    value: 'mutton-dum-biryani-jumbo',
+  }, {
+    name: 'Up & UP Chicken Kebab Biryani (Regular)',
+    value: 'kebab-dum-biryani-regular',
+  }, {
+    name: 'Up & UP Chicken Kebab Biryani (Jumbo)',
+    value: 'kebab-dum-biryani-jumbo',
+  }, {
+    name: 'Chicken Dum Biryani (Regular)',
+    value: 'chicken-dum-biryani-regular',
+  }, {
+    name: 'Chicken Dum Biryani (Jumbo)',
+    value: 'chicken-dum-biryani-jumbo',
+  }, {
+    name: 'Egg Dum Biryani (Regular)',
+    value: 'egg-dum-biryani-regular',
+  }, {
+    name: 'Egg Dum Biryani (Jumbo)',
+    value: 'egg-dum-biryani-jumbo',
+  }, {
+    name: 'Chicken Khima Biryani (Regular)',
+    value: 'chicken-khima-biryani-regular',
+  }, {
+    name: 'Chicken Khima Biryani (Jumbo)',
+    value: 'chicken-khima-biryani-jumbo',
   }],
 };
