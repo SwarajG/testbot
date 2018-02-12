@@ -24,6 +24,7 @@ const createElements = priceList.biryani.map((biryani) => {
   buttons.push();
   return {
     title: name,
+    subtitle: `Regular: (Rs. ${price.regular}), Jumbo: (Rs. ${price.jumbo})`,
     image_url: image,
     buttons,
   };
