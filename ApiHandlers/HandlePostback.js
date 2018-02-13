@@ -89,7 +89,6 @@ const getResponseForReply = (payload, senderPsid) => {
         const forNextOrder = {
           text: 'Please just type in "menu" for the next order to start.',
         };
-        console.log('Order has been canceled...');
         asyncCallSend(senderPsid, cancelResponse)
           .then(() => asyncCallSend(senderPsid, forNextOrder))
           .catch(errFromCancel => console.log(errFromCancel));

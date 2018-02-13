@@ -18,7 +18,6 @@ const forNextOrder = {
 module.exports = {
   handleMessage: (senderPsid, receivedMessage) => {
     let response;
-    console.log(receivedMessage);
     if (receivedMessage.quick_reply) {
       const quickReply = receivedMessage.quick_reply;
       const { payload } = quickReply;
@@ -83,7 +82,6 @@ module.exports = {
         }
       }
     } else if (receivedMessage.text) {
-      console.log(receivedMessage.text);
       const userText = receivedMessage.text;
       const phoneNumber = parseInt(userText, 10);
       if (userText.toLowerCase().trim() === 'menu') {
@@ -92,7 +90,8 @@ module.exports = {
           callSendAPI(senderPsid, newResponse);
         }
       } else if (userText.toLowerCase().trim() === 'cancel') {
-        const cancelOrder = `${enums.ORDER_STATUS.CANCELED}_order`;
+        // add any value at the end to make call
+        const cancelOrder = `${enums.ORDER_STATUS.CANCELED}_paneer-roll`;
         getResponseForReply(cancelOrder, senderPsid);
       } else if (phoneNumber.toString().length === 10) {
         addPhoneNumberForOrder(senderPsid, phoneNumber.toString(), (err, phoneResponse) => {
