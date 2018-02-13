@@ -88,6 +88,22 @@ module.exports = {
     price: 399,
   }],
   biryani: [{
+    name: 'Chicken Dum Biryani',
+    value: 'chicken-dum-biryani',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/chicken-dum-biryani.jpeg',
+    price: {
+      regular: 150,
+      jumbo: 250,
+    },
+  }, {
+    name: 'Up & UP Chicken Kebab Biryani',
+    value: 'kebab-dum-biryani',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/chicken-kebab-biryani.jpg',
+    price: {
+      regular: 180,
+      jumbo: 330,
+    },
+  }, {
     name: 'Up & Up Veg Dum Biryani',
     value: 'veg-dum-biryani',
     image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/veg-dum-biryani.jpeg',
@@ -118,22 +134,6 @@ module.exports = {
     price: {
       regular: 180,
       jumbo: 330,
-    },
-  }, {
-    name: 'Up & UP Chicken Kebab Biryani',
-    value: 'kebab-dum-biryani',
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/chicken-kebab-biryani.jpg',
-    price: {
-      regular: 180,
-      jumbo: 330,
-    },
-  }, {
-    name: 'Chicken Dum Biryani',
-    value: 'chicken-dum-biryani',
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/chicken-dum-biryani.jpeg',
-    price: {
-      regular: 150,
-      jumbo: 250,
     },
   }, {
     name: 'Egg Dum Biryani',

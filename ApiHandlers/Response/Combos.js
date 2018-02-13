@@ -6,11 +6,13 @@ const createElements = priceList.combos.map((combo) => {
     name,
     image,
     value,
+    descriptions,
     price,
   } = combo;
   const buttonTitle = `Add to cart(Rs. ${price})`;
   return {
     title: name,
+    subtitle: descriptions,
     image_url: image,
     buttons: [{
       type: 'postback',
