@@ -15,7 +15,7 @@ module.exports = {
     },
   }, {
     name: 'Rolls',
-    imageUrl: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
+    imageUrl: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/paneer-roll.jpg',
     button: {
       title: 'Show more',
       payload: 'show-rolls',
@@ -38,17 +38,17 @@ module.exports = {
   rolls: [{
     name: 'Paneer Roll',
     value: 'paneer-roll',
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/paneer-roll.jpeg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/paneer-roll.jpg',
     price: 99,
   }, {
     name: 'Egg Roll',
     value: 'egg-roll',
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/egg-roll.jpeg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/egg-roll.jpg',
     price: 89,
   }, {
     name: 'Chicken Roll',
     value: 'chicken-roll',
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/1509099231_KnorrShanghaiChickenWda.jpg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/chicken-roll.jpg',
     price: 99,
   }],
   desserts: [{
@@ -153,50 +153,25 @@ module.exports = {
     },
   }],
   beverages: [{
-    name: 'Coke [300 Ml]',
-    value: 'coke',
+    name: 'Sprite (300 ml)',
+    value: 'sprite',
     price: 35,
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/coke.jpg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/sprite.jpg',
+  }, {
+    name: 'Sprite (750 ml)',
+    value: 'sprite',
+    price: 40,
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/sprite.jpg',
   }, {
     name: 'Mineral Water [1 litre]',
     value: 'water',
     price: 30,
     image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/water-bottle.jpg',
   }, {
-    name: 'Thumps Up [300 Ml]',
-    value: 'thumps-up',
-    price: 35,
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/thumbs-up.jpg',
-  }, {
-    name: 'pepsi',
-    value: 'pepsi-small',
-    price: 15,
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/pepsi.jpg',
-  }, {
-    name: 'slice (mango)',
+    name: 'slice ( 650 ml)',
     value: 'slice',
     price: 35,
     image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/slice-mango.jpg',
-  }, {
-    name: 'mountain dew',
-    value: 'mountain-dew',
-    price: 35,
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/mountain-dew.jpg',
-  }, {
-    name: 'pepsi 750ml',
-    value: 'pepsi-large',
-    price: 40,
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/pepsi.jpg',
-  }, {
-    name: '7 up 750ml',
-    value: '7up',
-    price: 40,
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/7up.jpg',
-  }, {
-    name: 'TATA WATER +',
-    value: 'tata-water',
-    price: 20,
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/tata+water+%2B.jpg',
   }],
   outlets: [{
     name: 'Up & Up Bodakdev',

@@ -98,7 +98,7 @@ module.exports = {
             if (error) console.log(error);
             console.log('Successfully updated the status for the order...', statusUpdateResponse);
             const choiceResponse = {
-              text: 'Your order has been placed, We will contact you and confirm your address and order. For any further query please contact +91 9427859512.',
+              text: 'Your order has been placed, We will contact you and confirm your address and order. For any further query please contact +91 9081234508.',
             };
             asyncCallSend(senderPsid, choiceResponse)
               .then(() => asyncCallSend(senderPsid, forNextOrder))

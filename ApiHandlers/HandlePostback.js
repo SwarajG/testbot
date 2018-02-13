@@ -153,7 +153,7 @@ module.exports = {
     if (response) {
       if (payload === 'getstarted') {
         const cancelWarning = {
-          text: 'You can cancel your order during the ordering process, after ordering if you want to cancel the order you can call us on +91 9427859512',
+          text: 'You can cancel your order during the ordering process, after ordering if you want to cancel the order you can call us on +91 9081234508',
         };
         asyncCallSend(senderPsid, cancelWarning)
           .then(() => asyncCallSend(senderPsid, response))
