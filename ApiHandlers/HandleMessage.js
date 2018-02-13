@@ -18,6 +18,7 @@ const forNextOrder = {
 module.exports = {
   handleMessage: (senderPsid, receivedMessage) => {
     let response;
+    console.log(receivedMessage);
     if (receivedMessage.quick_reply) {
       const quickReply = receivedMessage.quick_reply;
       const { payload } = quickReply;
@@ -82,6 +83,7 @@ module.exports = {
         }
       }
     } else if (receivedMessage.text) {
+      console.log(receivedMessage.text);
       const userText = receivedMessage.text;
       const phoneNumber = parseInt(userText, 10);
       if (userText.toLowerCase().trim() === 'menu') {
