@@ -1,5 +1,6 @@
 const ses = require('node-ses');
 const enums = require('../utils/enum');
+const utils = require('../utils/helper');
 
 const client = ses.createClient({
   key: process.env.AWS_ACCESS_KEY,
@@ -30,10 +31,7 @@ const emailHtml = (order) => {
     deliverMethod,
     itemList,
   } = order;
-  const totalPrice = itemList
-    .reduce((accumulator, currentItem) =>
-      accumulator + (currentItem.price * currentItem.quantity), 0);
-  const priceAfterGSTAndPackgingAndDelivery = totalPrice + ((5 * totalPrice) / 100) + ((8 * totalPrice) / 100) + 30;
+  const totalAmount = utils.getTotalAmount(itemList);
   const htmlForEmail = `
     <!DOCTYPE html>
     <html>
@@ -60,7 +58,7 @@ const emailHtml = (order) => {
         ${getLocationIfNeeded(deliverMethod)}
         <p style="text-align: center"><b>Phone Number:</b> ${phone}</p>
       </div>
-      <p style="text-align: center;"><b>Total with GST(5% (2.5% cgst, 2.5% sgst)) and packaging charges (8%) and delivery:</b> ${priceAfterGSTAndPackgingAndDelivery}</p>
+      <p style="text-align: center;"><b>Total with GST(5% (2.5% cgst, 2.5% sgst)) and packaging charges (8%) and delivery:</b> ${totalAmount}</p>
       <p style="text-align: center"><b>Order Id:</b> ${orderId}</p>
       <p style="text-align: center"><b>fbUser Id:</b> ${userId}</p>
     </body>

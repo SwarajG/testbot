@@ -21,12 +21,12 @@ const getElemets = order => order.itemList.map((item) => {
       payload: 'place-order',
     }, {
       type: 'postback',
-      title: 'Change Quantity',
-      payload: `${enums.CHANGE_QUANTITY}_${itemId}`,
-    }, {
-      type: 'postback',
       title: 'Remove from cart',
       payload: `${enums.DELETE_ITEM}_${itemId}`,
+    }, {
+      type: 'postback',
+      title: 'Continue ordering',
+      payload: 'show-menu',
     }],
   };
 });

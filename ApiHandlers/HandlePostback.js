@@ -16,6 +16,8 @@ const showCurrentOrderCart = require('./ShowCurrentOrderCart');
 const changeQuantityForItem = require('./ChangeQuantityForItem');
 const OUTLETS = require('./Response/Outlet');
 const setMethodAsDeliver = require('../controller/order/DeliverMethodForOrder');
+const utils = require('../utils/helper');
+const Order = require('../model/order');
 
 const prepareNextAction = (senderPsid, action, itemName, itemId) => {
   let response = {};
@@ -158,6 +160,22 @@ module.exports = {
         asyncCallSend(senderPsid, cancelWarning)
           .then(() => asyncCallSend(senderPsid, response))
           .catch(err => console.log(err));
+      } else if (payload === 'order-pickup' || payload === 'order-delivery') {
+        Order.getOpenOrderByUserId(senderPsid, (getOrderErr, orderList) => {
+          if (getOrderErr) {
+            console.log('Error in getting the order...', getOrderErr);
+          } else {
+            const order = orderList[0];
+            const { itemList: finalItemLsit } = order;
+            const totalAmount = utils.getTotalAmount(finalItemLsit);
+            const totalAmountText = {
+              text: `Your total amount for the order is ${totalAmount} with GST and packaging and with delivery chaarges.`,
+            };
+            asyncCallSend(senderPsid, totalAmountText)
+              .then(() => asyncCallSend(senderPsid, response))
+              .catch(err => console.log(err));
+          }
+        });
       } else {
         callSendAPI(senderPsid, response);
       }

@@ -105,7 +105,7 @@ module.exports = {
               .then(() => asyncCallSend(senderPsid, forNextOrder))
               .catch(errorResponse => console.log(errorResponse));
             Order.getOrderedOrderByUserId(senderPsid, (getOrderErr, orderList) => {
-              if (err) {
+              if (getOrderErr) {
                 console.log('Error in getting the order...', getOrderErr);
               } else {
                 const order = orderList[0];
