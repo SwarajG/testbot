@@ -33,7 +33,7 @@ const emailHtml = (order) => {
   const totalPrice = itemList
     .reduce((accumulator, currentItem) =>
       accumulator + (currentItem.price * currentItem.quantity), 0);
-  const priceAfterGST = totalPrice - ((5 * totalPrice) / 100);
+  const priceAfterGSTAndPackging = totalPrice + ((5 * totalPrice) / 100) + ((8 * totalPrice) / 100);
   const htmlForEmail = `
     <!DOCTYPE html>
     <html>
@@ -60,7 +60,7 @@ const emailHtml = (order) => {
         ${getLocationIfNeeded(deliverMethod)}
         <p style="text-align: center"><b>Phone Number:</b> ${phone}</p>
       </div>
-      <p style="text-align: center;"><b>Total with GST(5%):</b> ${priceAfterGST}</p>
+      <p style="text-align: center;"><b>Total with GST(5% (2.5% cgst, 2.5% sgst)) and packaging charges (8%):</b> ${priceAfterGSTAndPackging}</p>
       <p style="text-align: center"><b>Order Id:</b> ${orderId}</p>
       <p style="text-align: center"><b>fbUser Id:</b> ${userId}</p>
     </body>
@@ -71,7 +71,7 @@ const emailHtml = (order) => {
 
 module.exports = (order) => {
   client.sendEmail({
-    to: 'gandhiswaraj94@gmail.com',
+    to: 'swapnil@yuppfoods.com',
     from: 'gandhiswaraj94@gmail.com',
     subject: 'Order for Up & Up',
     message: emailHtml(order),
