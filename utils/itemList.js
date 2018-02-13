@@ -122,7 +122,7 @@ module.exports = {
   }, {
     name: 'Up & UP Chicken Kebab Biryani',
     value: 'kebab-dum-biryani',
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/chicken-kebab-biryani.jpg',
     price: {
       regular: 180,
       jumbo: 330,
@@ -146,7 +146,7 @@ module.exports = {
   }, {
     name: 'Chicken Khima Biryani',
     value: 'chicken-khima-biryani',
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/keema-biryani.jpg',
     price: {
       regular: 189,
       jumbo: 339,
