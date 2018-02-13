@@ -8,7 +8,7 @@ module.exports = {
     },
   }, {
     name: 'Biryani',
-    imageUrl: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani.jpg',
+    imageUrl: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/mutton-dum-biryani.jpeg',
     button: {
       title: 'Show more',
       payload: 'show-biryani',
@@ -54,13 +54,13 @@ module.exports = {
   desserts: [{
     name: 'Up & Up - Phirni',
     value: 'phirni-desserts',
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-phirni.jpg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/phirini.jpeg',
     price: 99,
   }, {
-    name: 'Rava Dry Fruit Halwa',
-    value: 'halwa-desserts',
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
-    price: 75,
+    name: 'Gulab Jamun',
+    value: 'gulab-jamun',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/gulab-jamun.jpeg',
+    price: 29,
   }],
   combos: [{
     name: 'Single (Serve 1)',
@@ -90,7 +90,7 @@ module.exports = {
   biryani: [{
     name: 'Up & Up Veg Dum Biryani',
     value: 'veg-dum-biryani',
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/veg-dum-biryani.jpeg',
     price: {
       regular: 150,
       jumbo: 250,
@@ -98,7 +98,7 @@ module.exports = {
   }, {
     name: 'Masala Rajma Rice',
     value: 'masala-rajma-rice',
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/rajma-chawal.jpeg',
     price: {
       regular: 130,
       jumbo: 210,
@@ -106,7 +106,7 @@ module.exports = {
   }, {
     name: 'Special Chole Rice',
     value: 'special-chole-rice',
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/chole-rice.jpeg',
     price: {
       regular: 130,
       jumbo: 210,
@@ -114,7 +114,7 @@ module.exports = {
   }, {
     name: 'Mutton Dum Biryani',
     value: 'mutton-dum-biryani',
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/mutton-dum-biryani.jpeg',
     price: {
       regular: 180,
       jumbo: 330,
@@ -130,7 +130,7 @@ module.exports = {
   }, {
     name: 'Chicken Dum Biryani',
     value: 'chicken-dum-biryani',
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/chicken-dum-biryani.jpeg',
     price: {
       regular: 150,
       jumbo: 250,
@@ -138,7 +138,7 @@ module.exports = {
   }, {
     name: 'Egg Dum Biryani',
     value: 'egg-dum-biryani',
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/upmup-biryani-roll.jpg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/egg-dum-biryani.jpeg',
     price: {
       regular: 130,
       jumbo: 210,
@@ -156,47 +156,47 @@ module.exports = {
     name: 'Coke [300 Ml]',
     value: 'coke',
     price: 35,
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/combo.jpeg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/coke.jpg',
   }, {
     name: 'Mineral Water [1 litre]',
     value: 'water',
     price: 30,
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/combo.jpeg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/water-bottle.jpg',
   }, {
     name: 'Thumps Up [300 Ml]',
     value: 'thumps-up',
     price: 35,
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/combo.jpeg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/thumbs-up.jpg',
   }, {
     name: 'pepsi',
     value: 'pepsi-small',
     price: 15,
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/combo.jpeg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/pepsi.jpg',
   }, {
     name: 'slice (mango)',
     value: 'slice',
     price: 35,
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/combo.jpeg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/slice-mango.jpg',
   }, {
     name: 'mountain dew',
     value: 'mountain-dew',
     price: 35,
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/combo.jpeg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/mountain-dew.jpg',
   }, {
     name: 'pepsi 750ml',
     value: 'pepsi-large',
     price: 40,
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/combo.jpeg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/pepsi.jpg',
   }, {
     name: '7 up 750ml',
     value: '7up',
     price: 40,
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/combo.jpeg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/7up.jpg',
   }, {
     name: 'TATA WATER +',
     value: 'tata-water',
     price: 20,
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/combo.jpeg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/tata+water+%2B.jpg',
   }],
   outlets: [{
     name: 'Up & Up Bodakdev',
@@ -210,12 +210,12 @@ module.exports = {
     value: 'southbopal',
   }, {
     name: 'Up & Up Prahlad Nagar',
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/resturant1.jpeg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/rasturant-3.png',
     address: 'prahlad nagar',
     value: 'prahladnagar',
   }, {
     name: 'Up & Up Navrangpura',
-    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/resturant2.jpeg',
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/rasturant-4.png',
     address: 'ground floor, shri krishna center, mithakali six roads, navrangpura, mithakhali',
     value: 'navrangpura',
   }],
