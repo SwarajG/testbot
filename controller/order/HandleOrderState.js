@@ -10,9 +10,11 @@ const setPickupLocationForOrder = require('./PickupLocationForOrder');
 const updateOrderStatus = require('../order/UpdateOrderStatus');
 
 const handleOrderStatus = (userId, payload, cb) => {
+  console.log(payload);
   const argumentsForOrder = payload.split('_');
   const action = argumentsForOrder[0];
   const valueOfItem = argumentsForOrder.slice(1, argumentsForOrder.length)[0];
+  console.log(action);
   switch (action) {
     case enums.ADD_ITEM:
       addItemToCart(userId, valueOfItem, cb);
