@@ -9,7 +9,7 @@ module.exports = {
       .filter(item => item.value);
     return allFilteredItems.find(item => item.value === itemId);
   },
-  totalAmount: (orderItemList) => {
+  getTotalAmount: (orderItemList) => {
     const totalPrice = orderItemList
       .reduce((accumulator, currentItem) =>
         accumulator + (currentItem.price * currentItem.quantity), 0);
