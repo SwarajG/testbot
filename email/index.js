@@ -22,7 +22,7 @@ const getLocationIfNeeded = (deliverMethod) => {
   return '';
 };
 
-const emailHtml = (order) => {
+const emailHtml = (order, user) => {
   const {
     orderId,
     userId,
@@ -31,6 +31,11 @@ const emailHtml = (order) => {
     deliverMethod,
     itemList,
   } = order;
+  const {
+    first_name: firstName,
+    last_name: lastName,
+    profile_pic: userImage,
+  } = user;
   const totalAmount = utils.getTotalAmount(itemList);
   const htmlForEmail = `
     <!DOCTYPE html>
@@ -49,6 +54,11 @@ const emailHtml = (order) => {
       <img src="https://s3-ap-southeast-1.amazonaws.com/upandup-resources/order.jpg" style="max-width: 100%" />
       <h1 style="text-align: center">Order</h1>
       <h2 style="text-align: center">Status: ${status}</h2>
+      <div>
+        <div style="height: 100px; width: 100px; background: url('${userImage}') no-repeat center center; background-size: cover; border-radius: 50%; margin: 0 auto;"></div>
+        <p>FirstName: ${firstName}</p>
+        <p>LastName: ${lastName}</p>
+      </div>
       <div style="display: flex; flex-wrap:wrap;">
         ${itemList.map(item => itemHtmlForItem(item)).join('')}
       </div>
@@ -67,12 +77,13 @@ const emailHtml = (order) => {
   return htmlForEmail;
 };
 
-module.exports = (order) => {
+module.exports = (order, userProfile) => {
   client.sendEmail({
-    to: 'swapnil@yuppfoods.com',
+    // to: 'swapnil@yuppfoods.com',
+    to: 'gandhiswaraj94@gmail.com',
     from: 'gandhiswaraj94@gmail.com',
     subject: 'Order for Up & Up',
-    message: emailHtml(order),
+    message: emailHtml(order, userProfile),
     altText: 'Order Details',
   }, (err) => {
     console.log(err);

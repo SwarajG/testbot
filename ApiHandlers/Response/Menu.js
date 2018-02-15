@@ -41,7 +41,6 @@ module.exports = (userId) => {
     } else if (orderList.length === 0) {
       const clonedMenuList = _.cloneDeep(menuList);
       const response = getResponse(clonedMenuList);
-      console.log('1', JSON.stringify(response));
       callSendAPI(userId, response);
     } else if (orderList.length > 0) {
       const clonedMenuList = _.cloneDeep(menuList);
@@ -54,7 +53,6 @@ module.exports = (userId) => {
         return menuItem;
       });
       const response = getResponse(newResponse);
-      console.log('2', JSON.stringify(response));
       callSendAPI(userId, response);
     }
   });

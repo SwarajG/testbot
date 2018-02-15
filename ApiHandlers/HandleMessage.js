@@ -7,7 +7,7 @@ const { getResponseForReply } = require('./HandlePostback');
 const showCurrentOrderCart = require('./ShowCurrentOrderCart');
 const addPhoneNumberForOrder = require('../controller/order/AddPhoneNumberForOrder');
 const updateOrderStatus = require('../controller/order/UpdateOrderStatus');
-const sendEmailToaAdmin = require('../email');
+const sendEmail = require('./SendEmail');
 const Order = require('../model/order');
 const enums = require('../utils/enum');
 
@@ -109,7 +109,7 @@ module.exports = {
                 console.log('Error in getting the order...', getOrderErr);
               } else {
                 const order = orderList[0];
-                sendEmailToaAdmin(order);
+                sendEmail(senderPsid, order);
               }
             });
           });
