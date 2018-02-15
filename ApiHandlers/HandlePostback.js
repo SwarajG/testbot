@@ -14,10 +14,7 @@ const enums = require('../utils/enum');
 const asyncCallSend = require('./AsyncCallSendApi');
 const showCurrentOrderCart = require('./ShowCurrentOrderCart');
 const changeQuantityForItem = require('./ChangeQuantityForItem');
-const OUTLETS = require('./Response/Outlet');
-const setMethodAsDeliver = require('../controller/order/DeliverMethodForOrder');
-const utils = require('../utils/helper');
-const Order = require('../model/order');
+const showAmountAndProcess = require('./ShowAmountAndProcess');
 
 const prepareNextAction = (senderPsid, action, itemName, itemId) => {
   let response = {};
@@ -131,15 +128,9 @@ const getResponseForReply = (payload, senderPsid) => {
       case 'place-order':
         return PLACE_ORDER;
       case 'order-pickup':
-        return OUTLETS;
       case 'order-delivery':
-        setMethodAsDeliver(senderPsid, (err) => {
-          if (err) console.log(err);
-          console.log('Successfulyy added method as delivery to home.');
-        });
-        return {
-          text: 'Please enter your phone number, without it order will not be considered as a valid order. We will confirm your address on this phone number',
-        };
+        showAmountAndProcess(senderPsid, payload);
+        return null;
       default:
         return {
           text: 'Sorry, not able to catch your response, please try from the given options',
@@ -160,25 +151,6 @@ module.exports = {
         asyncCallSend(senderPsid, cancelWarning)
           .then(() => asyncCallSend(senderPsid, response))
           .catch(err => console.log(err));
-      } else if (payload === 'order-pickup' || payload === 'order-delivery') {
-        console.log(payload);
-        Order.getOpenOrderByUserId(senderPsid, (getOrderErr, orderList) => {
-          if (getOrderErr) {
-            console.log('Error in getting the order...', getOrderErr);
-          } else {
-            const order = orderList[0];
-            console.log(order);
-            const { itemList: finalItemLsit } = order;
-            const totalAmount = utils.getTotalAmount(finalItemLsit);
-            console.log('totalAmount: ', totalAmount);
-            const totalAmountText = {
-              text: `Your total amount for the order is ${totalAmount} with GST and packaging and with delivery chaarges.`,
-            };
-            asyncCallSend(senderPsid, totalAmountText)
-              .then(() => asyncCallSend(senderPsid, response))
-              .catch(err => console.log(err));
-          }
-        });
       } else {
         callSendAPI(senderPsid, response);
       }
