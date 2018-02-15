@@ -161,13 +161,16 @@ module.exports = {
           .then(() => asyncCallSend(senderPsid, response))
           .catch(err => console.log(err));
       } else if (payload === 'order-pickup' || payload === 'order-delivery') {
+        console.log(payload);
         Order.getOpenOrderByUserId(senderPsid, (getOrderErr, orderList) => {
           if (getOrderErr) {
             console.log('Error in getting the order...', getOrderErr);
           } else {
             const order = orderList[0];
+            console.log(order);
             const { itemList: finalItemLsit } = order;
             const totalAmount = utils.getTotalAmount(finalItemLsit);
+            console.log('totalAmount: ', totalAmount);
             const totalAmountText = {
               text: `Your total amount for the order is ${totalAmount} with GST and packaging and with delivery chaarges.`,
             };
