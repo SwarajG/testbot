@@ -54,10 +54,10 @@ const emailHtml = (order, user) => {
       <img src="https://s3-ap-southeast-1.amazonaws.com/upandup-resources/order.jpg" style="max-width: 100%" />
       <h1 style="text-align: center">Order</h1>
       <h2 style="text-align: center">Status: ${status}</h2>
-      <div>
+      <div style="text-align: center">
         <div style="height: 100px; width: 100px; background: url('${userImage}') no-repeat center center; background-size: cover; border-radius: 50%; margin: 0 auto;"></div>
-        <p>FirstName: ${firstName}</p>
-        <p>LastName: ${lastName}</p>
+        <p style="text-align: center"><b>FirstName:</b> ${firstName}</p>
+        <p style="text-align: center"><b>LastName:</b> ${lastName}</p>
       </div>
       <div style="display: flex; flex-wrap:wrap;">
         ${itemList.map(item => itemHtmlForItem(item)).join('')}
@@ -79,8 +79,8 @@ const emailHtml = (order, user) => {
 
 module.exports = (order, userProfile) => {
   client.sendEmail({
-    // to: 'swapnil@yuppfoods.com',
-    to: 'gandhiswaraj94@gmail.com',
+    to: 'swapnil@yuppfoods.com',
+    // to: 'gandhiswaraj94@gmail.com',
     from: 'gandhiswaraj94@gmail.com',
     subject: 'Order for Up & Up',
     message: emailHtml(order, userProfile),
