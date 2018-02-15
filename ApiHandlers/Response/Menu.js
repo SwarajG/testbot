@@ -16,6 +16,16 @@ const menuList = priceList.menu.map((category) => {
   };
 });
 
+const getResponse = response => ({
+  attachment: {
+    type: 'template',
+    payload: {
+      template_type: 'generic',
+      elements: response,
+    },
+  },
+});
+
 module.exports = (userId) => {
   Order.getOpenOrderByUserId(userId, (err, orderList) => {
     if (err) {
@@ -28,19 +38,11 @@ module.exports = (userId) => {
         });
         return menuItem;
       });
-      callSendAPI(userId, newResponse);
+      const response = getResponse(newResponse);
+      callSendAPI(userId, response);
     } else if (orderList.length > 0) {
-      callSendAPI(userId, menuList);
+      const response = getResponse(menuList);
+      callSendAPI(userId, response);
     }
   });
-};
-
-module.exports = {
-  attachment: {
-    type: 'template',
-    payload: {
-      template_type: 'generic',
-      elements: menuList,
-    },
-  },
 };
