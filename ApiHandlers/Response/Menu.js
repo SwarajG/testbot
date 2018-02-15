@@ -31,7 +31,9 @@ module.exports = (userId) => {
     if (err) {
       console.log('Sorry, not able to get the order...');
     } else if (orderList.length === 0) {
-      console.log('0', orderList);
+      const response = getResponse(menuList);
+      callSendAPI(userId, response);
+    } else {
       const newResponse = menuList.map((menuItem) => {
         menuItem.buttons.push({
           title: 'Place order',
@@ -41,10 +43,6 @@ module.exports = (userId) => {
         return menuItem;
       });
       const response = getResponse(newResponse);
-      callSendAPI(userId, response);
-    } else {
-      console.log('1', orderList);
-      const response = getResponse(menuList);
       callSendAPI(userId, response);
     }
   });
