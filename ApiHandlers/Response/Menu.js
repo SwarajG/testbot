@@ -32,7 +32,7 @@ module.exports = (userId) => {
       console.log('Sorry, not able to get the order...');
     } else if (orderList.length === 0) {
       const response = getResponse(menuList);
-      console.log('1: ', orderList, response);
+      console.log('1', JSON.stringify(response));
       callSendAPI(userId, response);
     } else if (orderList.length > 0) {
       const newResponse = menuList.map((menuItem) => {
@@ -44,7 +44,7 @@ module.exports = (userId) => {
         return menuItem;
       });
       const response = getResponse(newResponse);
-      console.log('2', orderList, response);
+      console.log('2', JSON.stringify(response));
       callSendAPI(userId, response);
     }
   });
