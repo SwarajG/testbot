@@ -24,9 +24,8 @@ const showAmountAndProcess = (senderPsid, payload) => {
       const order = orderList[0];
       const { itemList: finalItemLsit } = order;
       const totalAmount = helper.getTotalAmount(finalItemLsit);
-      console.log('totalAmount: ', totalAmount);
       const totalAmountText = {
-        text: `Your total amount for the order is ${totalAmount} with GST and packaging and with delivery chaarges.`,
+        text: `Your total amount for the order is Rs. ${totalAmount} with GST and packaging and with delivery chaarges.`,
       };
       asyncCallSend(senderPsid, totalAmountText)
         .then(() => asyncCallSend(senderPsid, response))
