@@ -198,65 +198,81 @@ module.exports = {
     name: 'Up & Up Veg Dum Biryani (Regular)',
     value: 'veg-dum-biryani-regular',
     price: 150,
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/veg-dum-biryani.jpeg',
   }, {
     name: 'Up & Up Veg Dum Biryani (Jumbo)',
     value: 'veg-dum-biryani-jumbo',
     price: 250,
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/veg-dum-biryani.jpeg',
   }, {
     name: 'Masala Rajma Rice (Regular)',
     value: 'masala-rajma-rice-regular',
     price: 130,
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/rajma-chawal.jpeg',
   }, {
     name: 'Masala Rajma Rice (Jumbo)',
     value: 'masala-rajma-rice-jumbo',
     price: 210,
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/rajma-chawal.jpeg',
   }, {
     name: 'Special Chole Rice (Regular)',
     value: 'special-chole-rice-regular',
     price: 130,
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/chole-rice.jpeg',
   }, {
     name: 'Special Chole Rice (Jumbo)',
     value: 'special-chole-rice-jumbo',
     price: 210,
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/chole-rice.jpeg',
   }, {
     name: 'Mutton Dum Biryani (Regular)',
     value: 'mutton-dum-biryani-regular',
     price: 180,
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/mutton-dum-biryani.jpeg',
   }, {
     name: 'Mutton Dum Biryani (Jumbo)',
     value: 'mutton-dum-biryani-jumbo',
     price: 330,
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/mutton-dum-biryani.jpeg',
   }, {
     name: 'Up & UP Chicken Kebab Biryani (Regular)',
     value: 'kebab-dum-biryani-regular',
     price: 180,
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/chicken-kebab-biryani.jpg',
   }, {
     name: 'Up & UP Chicken Kebab Biryani (Jumbo)',
     value: 'kebab-dum-biryani-jumbo',
     price: 330,
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/chicken-kebab-biryani.jpg',
   }, {
     name: 'Chicken Dum Biryani (Regular)',
     value: 'chicken-dum-biryani-regular',
     price: 150,
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/chicken-dum-biryani.jpeg',
   }, {
     name: 'Chicken Dum Biryani (Jumbo)',
     value: 'chicken-dum-biryani-jumbo',
     price: 250,
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/chicken-dum-biryani.jpeg',
   }, {
     name: 'Egg Dum Biryani (Regular)',
     value: 'egg-dum-biryani-regular',
     price: 130,
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/egg-dum-biryani.jpeg',
   }, {
     name: 'Egg Dum Biryani (Jumbo)',
     value: 'egg-dum-biryani-jumbo',
     price: 210,
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/egg-dum-biryani.jpeg',
   }, {
     name: 'Chicken Khima Biryani (Regular)',
     value: 'chicken-khima-biryani-regular',
     price: 189,
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/keema-biryani.jpg',
   }, {
     name: 'Chicken Khima Biryani (Jumbo)',
     value: 'chicken-khima-biryani-jumbo',
     price: 339,
+    image: 'https://s3-ap-southeast-1.amazonaws.com/upandup-resources/final-up-and-up-resources/keema-biryani.jpg',
   }],
 };
