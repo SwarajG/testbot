@@ -13,7 +13,8 @@ module.exports = {
     const totalPrice = orderItemList
       .reduce((accumulator, currentItem) =>
         accumulator + (currentItem.price * currentItem.quantity), 0);
-    return totalPrice + ((5 * totalPrice) / 100) + ((8 * totalPrice) / 100) + 30;
+    const totalAmount = totalPrice + ((5 * totalPrice) / 100) + ((8 * totalPrice) / 100) + 30;
+    return totalAmount.toFixed(2);
   },
 };
 
