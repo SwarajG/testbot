@@ -1,6 +1,6 @@
 const callSendAPI = require('./CallSendAPI');
 const GET_STARTED_RESPONSE = require('./Response/GetStarted');
-const GET_MENU_RESPONSE = require('./Response/Menu');
+const createMenuResponse = require('./Response/Menu');
 const SHOW_COMBOS_RESPONSE = require('./Response/Combos');
 const SHOW_BIRYANI_REPONSE = require('./Response/Biryani');
 const SHOW_ROLLES_RESPONSE = require('./Response/Rolls');
@@ -114,7 +114,8 @@ const getResponseForReply = (payload, senderPsid) => {
       case 'getstarted':
         return GET_STARTED_RESPONSE;
       case 'show-menu':
-        return GET_MENU_RESPONSE;
+        createMenuResponse(senderPsid);
+        return null;
       case 'show-combos':
         return SHOW_COMBOS_RESPONSE;
       case 'show-biryani':
@@ -146,7 +147,7 @@ module.exports = {
     if (response) {
       if (payload === 'getstarted') {
         const cancelWarning = {
-          text: 'You can cancel your order during the ordering process, after ordering if you want to cancel the order you can call us on +91 9081234508',
+          text: 'If you want to cancel the order, just type "cancel" and the order will be canceled.',
         };
         asyncCallSend(senderPsid, cancelWarning)
           .then(() => asyncCallSend(senderPsid, response))
