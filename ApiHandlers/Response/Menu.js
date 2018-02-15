@@ -31,11 +31,10 @@ module.exports = (userId) => {
     if (err) {
       console.log('Sorry, not able to get the order...');
     } else if (orderList.length === 0) {
-      console.log('1: ', orderList);
       const response = getResponse(menuList);
+      console.log('1: ', orderList, response);
       callSendAPI(userId, response);
     } else if (orderList.length > 0) {
-      console.log('2', orderList);
       const newResponse = menuList.map((menuItem) => {
         menuItem.buttons.push({
           title: 'Place order',
@@ -45,6 +44,7 @@ module.exports = (userId) => {
         return menuItem;
       });
       const response = getResponse(newResponse);
+      console.log('2', orderList, response);
       callSendAPI(userId, response);
     }
   });
