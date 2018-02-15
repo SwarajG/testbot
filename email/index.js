@@ -80,7 +80,6 @@ const emailHtml = (order, user) => {
 module.exports = (order, userProfile) => {
   client.sendEmail({
     to: 'swapnil@yuppfoods.com',
-    // to: 'gandhiswaraj94@gmail.com',
     from: 'gandhiswaraj94@gmail.com',
     subject: 'Order for Up & Up',
     message: emailHtml(order, userProfile),

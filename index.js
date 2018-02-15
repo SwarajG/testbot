@@ -4,8 +4,6 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const ApiHandlers = require('./ApiHandlers');
 const config = require('./config');
-// const email = require('./email/newIndex');
-// const Order = require('./model/order');
 // const SetupHandlers = require('./SetupHandlers');
 
 const app = express().use(bodyParser.json());
