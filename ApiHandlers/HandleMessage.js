@@ -109,7 +109,7 @@ module.exports = {
                 console.log('Error in getting the order...', getOrderErr);
               } else {
                 const order = orderList[0];
-                // sendEmailToaAdmin(order);
+                sendEmailToaAdmin(order);
               }
             });
           });
