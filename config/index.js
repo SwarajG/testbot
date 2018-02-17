@@ -8,6 +8,7 @@ if (mongodbUser && mongodbPWd) {
   mongodbUrl = `mongodb://${mongodbUser}:${mongodbPWd}@${mongodbConnection}/${mongodbDataBase}`;
 } else {
   mongodbUrl = `mongodb://${mongodbConnection}/${mongodbDataBase}`;
+  console.log('Local database connected...');
 }
 
 module.exports = {
