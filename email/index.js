@@ -90,6 +90,6 @@ module.exports = (order, userProfile) => {
       console.log(err);
     });
   } else {
-    console.log('Email sent successfully...');
+    console.log('Email sent successfully from localhost :P');
   }
 };
