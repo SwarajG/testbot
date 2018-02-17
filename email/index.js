@@ -78,13 +78,18 @@ const emailHtml = (order, user) => {
 };
 
 module.exports = (order, userProfile) => {
-  client.sendEmail({
-    to: 'swapnil@yuppfoods.com',
-    from: 'gandhiswaraj94@gmail.com',
-    subject: 'Order for Up & Up',
-    message: emailHtml(order, userProfile),
-    altText: 'Order Details',
-  }, (err) => {
-    console.log(err);
-  });
+  const processEnv = process.env.NODE_ENV;
+  if (processEnv === 'prod') {
+    client.sendEmail({
+      to: 'swapnil@yuppfoods.com',
+      from: 'gandhiswaraj94@gmail.com',
+      subject: 'Order for Up & Up',
+      message: emailHtml(order, userProfile),
+      altText: 'Order Details',
+    }, (err) => {
+      console.log(err);
+    });
+  } else {
+    console.log('Email sent successfully...');
+  }
 };
