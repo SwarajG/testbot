@@ -7,6 +7,7 @@ const SHOW_ROLLES_RESPONSE = require('./Response/Rolls');
 const SHOW_DESSERT_RESPONSE = require('./Response/Desserts');
 const SHOW_BEVERAGE_REPOSEN = require('./Response/Beverages');
 const PLACE_ORDER = require('./Response/PlaceOrder');
+const CONTACT_INFO = require('./Response/ContactInfo');
 const orderController = require('../controller/order');
 const helper = require('../utils/helper');
 const itemList = require('../utils/itemList');
@@ -128,6 +129,8 @@ const getResponseForReply = (payload, senderPsid) => {
         return SHOW_BEVERAGE_REPOSEN;
       case 'place-order':
         return PLACE_ORDER;
+      case 'contact-info':
+        return CONTACT_INFO;
       case 'order-pickup':
       case 'order-delivery':
         showAmountAndProcess(senderPsid, payload);
