@@ -89,12 +89,13 @@ const getResponseForReply = (payload, senderPsid) => {
         const cancelResponse = {
           text: 'Your order has been canceled.',
         };
-        const forNextOrder = {
-          text: 'Please just type in "menu" for the next order to start.',
-        };
-        asyncCallSend(senderPsid, cancelResponse)
-          .then(() => asyncCallSend(senderPsid, forNextOrder))
-          .catch(errFromCancel => console.log(errFromCancel));
+        callSendAPI(senderPsid, cancelResponse);
+        // const forNextOrder = {
+        //   text: 'Please just type in "menu" for the next order to start.',
+        // };
+        // asyncCallSend(senderPsid, cancelResponse)
+        //   .then(() => asyncCallSend(senderPsid, forNextOrder))
+        //   .catch(errFromCancel => console.log(errFromCancel));
       } else {
         const {
           messageText,
@@ -152,12 +153,13 @@ module.exports = {
     const response = getResponseForReply(payload, senderPsid);
     if (response) {
       if (payload === 'getstarted') {
-        const cancelWarning = {
-          text: 'If you want to cancel the order, just type "cancel" and the order will be canceled.',
-        };
-        asyncCallSend(senderPsid, cancelWarning)
-          .then(() => asyncCallSend(senderPsid, response))
-          .catch(err => console.log(err));
+        // const cancelWarning = {
+        //   text: 'If you want to cancel the order, just type "cancel" and the order will be canceled.',
+        // };
+        // asyncCallSend(senderPsid, cancelWarning)
+        //   .then(() => asyncCallSend(senderPsid, response))
+        //   .catch(err => console.log(err));
+        callSendAPI(senderPsid, response);
       } else {
         callSendAPI(senderPsid, response);
       }

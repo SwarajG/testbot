@@ -11,9 +11,9 @@ const sendEmail = require('./SendEmail');
 const Order = require('../model/order');
 const enums = require('../utils/enum');
 
-const forNextOrder = {
-  text: 'Please just type in "menu" for the next order to start.',
-};
+// const forNextOrder = {
+//   text: 'Please just type in "menu" for the next order to start.',
+// };
 
 module.exports = {
   handleMessage: (senderPsid, receivedMessage) => {
@@ -101,9 +101,10 @@ module.exports = {
             const choiceResponse = {
               text: 'Your order has been placed, We will contact you and confirm your address and order. For any further query please contact +91 9081234508.',
             };
-            asyncCallSend(senderPsid, choiceResponse)
-              .then(() => asyncCallSend(senderPsid, forNextOrder))
-              .catch(errorResponse => console.log(errorResponse));
+            callSendAPI(senderPsid, choiceResponse);
+            // asyncCallSend(senderPsid, choiceResponse)
+            //   .then(() => asyncCallSend(senderPsid, forNextOrder))
+            //   .catch(errorResponse => console.log(errorResponse));
             Order.getOrderedOrderByUserId(senderPsid, (getOrderErr, orderList) => {
               if (getOrderErr) {
                 console.log('Error in getting the order...', getOrderErr);
