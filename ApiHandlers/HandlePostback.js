@@ -63,6 +63,9 @@ const getResponseTextForUser = (senderPsid, payload) => {
 };
 
 const getResponseForReply = (payload, senderPsid) => {
+  if (payload === 'cancel') {
+    payload = `${enums.ORDER_STATUS.CANCELED}_paneer-roll`;
+  }
   const splitPayload = payload.split('_');
   const allItems = [];
   Object.values(itemList).forEach(itemInfoList => allItems.push(itemInfoList));

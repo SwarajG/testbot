@@ -85,14 +85,14 @@ module.exports = {
       const userText = receivedMessage.text;
       const phoneNumber = parseInt(userText, 10);
       if (userText.toLowerCase().trim() === 'menu') {
-        const newResponse = getResponseForReply('getstarted', senderPsid);
-        if (newResponse) {
-          callSendAPI(senderPsid, newResponse);
-        }
+        // const newResponse = getResponseForReply('getstarted', senderPsid);
+        // if (newResponse) {
+        //   callSendAPI(senderPsid, newResponse);
+        // }
       } else if (userText.toLowerCase().trim() === 'cancel') {
         // add any value at the end to make call
-        const cancelOrder = `${enums.ORDER_STATUS.CANCELED}_paneer-roll`;
-        getResponseForReply(cancelOrder, senderPsid);
+        // const cancelOrder = `${enums.ORDER_STATUS.CANCELED}_paneer-roll`;
+        // getResponseForReply(cancelOrder, senderPsid);
       } else if (phoneNumber.toString().length === 10) {
         addPhoneNumberForOrder(senderPsid, phoneNumber.toString(), (err, phoneResponse) => {
           updateOrderStatus(senderPsid, enums.ORDER_STATUS.ORDERD, (error, statusUpdateResponse) => {
