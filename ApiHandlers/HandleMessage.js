@@ -118,10 +118,10 @@ module.exports = {
           console.log('Successfully added the phone number for the order...', phoneResponse);
         });
       } else {
-        const choiceResponse = {
-          text: 'Please enter valid value',
-        };
-        callSendAPI(senderPsid, choiceResponse);
+        // const choiceResponse = {
+        //   text: 'Please enter valid value',
+        // };
+        // callSendAPI(senderPsid, choiceResponse);
       }
     }
     callSendAPI(senderPsid, response);
